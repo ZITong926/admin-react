@@ -6,15 +6,15 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons"
 
 interface IHeaderProps {
   collapsed: boolean
-  breadcrumbList: any[]
   toggleCollapsed: () => void
+  breadcrumbList: Array<{ title: string; path: string; icon: string }>
 }
 
 const HeaderBar = (props: IHeaderProps) => {
-  const handleClick = (url?: string) => {
-    if (!url) return
-    if (history.location.pathname !== url) {
-      history.push(url)
+  const handleClick = (path?: string) => {
+    if (!path) return
+    if (history.location.pathname !== path) {
+      history.push(path)
     }
   }
 
@@ -28,9 +28,9 @@ const HeaderBar = (props: IHeaderProps) => {
         return (
           <Breadcrumb.Item
             key={item.title + index}
-            onClick={() => handleClick(item.url)}
+            onClick={() => handleClick(item.path)}
           >
-            <Icon type="container" />
+            <Icon type={item.icon} />
             <span>{item.title}</span>
           </Breadcrumb.Item>
         )

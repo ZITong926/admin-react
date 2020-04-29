@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Layout, Menu } from "antd"
 import { ClickParam } from "antd/lib/menu"
+import { MenuList } from '@/mock/menu'
 import { withRouter, RouteComponentProps } from "react-router-dom"
 import { Icon as LegacyIcon } from "@ant-design/compatible"
 
@@ -9,61 +10,8 @@ interface ISiderBarProps extends RouteComponentProps {
   handleMenu: (value: ClickParam) => void
 }
 
-interface IMenuList {
-  icon: string
-  title: string
-  path?: string
-  children?: IMenuList[]
-}
-
-const allMenus: IMenuList[] = [
-  {
-    title: "首页",
-    icon: "home",
-    path: "/app",
-  },
-  {
-    title: "Form",
-    icon: "home",
-    path: "/app/formboard",
-  },
-  {
-    title: "table",
-    icon: "bars",
-    path: "/app/tableboard",
-  },
-  {
-    title: "compass",
-    icon: "bars",
-    children: [
-      {
-        title: "Form",
-        icon: "home",
-        path: "/app/loading",
-      },
-    ],
-  },
-  {
-    title: "compass",
-    icon: "bars",
-    children: [
-      {
-        title: "Form",
-        icon: "home",
-        children: [
-          {
-            title: 'aa',
-            icon: 'home',
-            path: '/app/compoents'
-          }
-        ]
-      },
-    ],
-  }
-]
-
-const injectMenu = (allMenus: Array<IMenuList>) => {
-  return allMenus.map((item) => {
+const injectMenu = (MenuList: IMenuSpace.IMenuList[]) => {
+  return MenuList.map((item) => {
     if (item.children && item.children.length) {
       return (
         <Menu.SubMenu
@@ -93,7 +41,7 @@ const SiderBar = (props: ISiderBarProps) => {
     <Layout.Sider trigger={null} collapsible={true} collapsed={props.collapsed}>
       <div className="logo" />
       <Menu theme="dark" mode="inline" onClick={props.handleMenu}>
-        {injectMenu(allMenus)}
+        {injectMenu(MenuList)}
       </Menu>
     </Layout.Sider>
   )

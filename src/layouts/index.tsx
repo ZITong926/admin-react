@@ -2,23 +2,39 @@ import * as React from "react"
 import { Layout } from "antd"
 import store from "@/stores/global"
 import { observer } from "mobx-react"
-import {
-  Route,
-  Switch,
-  withRouter,
-  RouteComponentProps,
-} from "react-router-dom"
+import MenuList from "@/mock/menu"
 import SiderBar from "@/layouts/SiderBar"
 import HeaderBar from "@/layouts/HeaderBar"
+import { Route, Switch, withRouter, RouteProps, Redirect } from "react-router-dom"
 
 import "./index.less"
 
-const Dashboard = React.lazy(() => import("@/pages/login"))
-const Formboard = React.lazy(() => import("@/pages/form"))
-const Tableboard = React.lazy(() => import("@/pages/table"))
 const Loading = React.lazy(() => import("@/components/Loading"))
 
-const PageLayout = observer((props: RouteComponentProps) => {
+const PrivateRoute = ({ component, title, path, ...rest }: RouteProps & { title: string } ) => {
+  return (
+    <Route
+      {...rest}
+      path={path}
+      render={(props) =>
+        store.isLogin ? (
+          store.setTagsNavData({ title, path! }) && React.createElement(component!, props)
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: {
+                from: props.location,
+              },
+            }}
+          />
+        )
+      }
+    />
+  )
+}
+
+const PageLayout = observer(() => {
   return (
     <Layout className="layout">
       <SiderBar collapsed={store.collapsed} handleMenu={store.handleMenu} />
@@ -38,13 +54,9 @@ const PageLayout = observer((props: RouteComponentProps) => {
         >
           <React.Suspense fallback={<Loading />}>
             <Switch>
-              <Route exact={true} path="/app/dashboard" component={Dashboard} />
-              <Route exact={true} path="/app/formboard" component={Formboard} />
-              <Route
-                exact={true}
-                path="/app/tableboard"
-                component={Tableboard}
-              />
+              {MenuList.map((d) => (
+                <PrivateRoute exact={true} path={d.path!} title={d.title} component={d.component} />
+              ))}
             </Switch>
           </React.Suspense>
         </Layout.Content>
