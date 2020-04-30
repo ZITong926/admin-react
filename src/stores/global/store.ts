@@ -10,8 +10,8 @@ export default class Store extends BaseStore {
   @observable public collapsed: boolean = false
 
   // 菜单变化 面包更改
-  @observable public breadcrumbList: IObservableArray<IGlobalSpace.IBreadcrumbList> = [] as any
+  @observable public breadcrumbList: IObservableArray<IGloabalSpace.IBreadcrumbData> = [] as any
 
   // 路由配置
-  @observable public tagsData:　
+  @observable public tagsNavData: IObservableArray<IGloabalSpace.ITagsNavData> = [] as any
 }

@@ -2,36 +2,35 @@ import * as React from "react"
 import { Layout } from "antd"
 import store from "@/stores/global"
 import { observer } from "mobx-react"
-import MenuList from "@/mock/menu"
 import SiderBar from "@/layouts/SiderBar"
 import HeaderBar from "@/layouts/HeaderBar"
-import { Route, Switch, withRouter, RouteProps, Redirect } from "react-router-dom"
+import RouteConfig from "@/mock/routeConfig"
+import TagsNavBar from "@/components/TagsNavBar"
+import {
+  Route,
+  Switch,
+  withRouter,
+  Redirect,
+} from "react-router-dom"
 
 import "./index.less"
 
 const Loading = React.lazy(() => import("@/components/Loading"))
 
-const PrivateRoute = ({ component, title, path, ...rest }: RouteProps & { title: string } ) => {
-  return (
-    <Route
-      {...rest}
-      path={path}
-      render={(props) =>
-        store.isLogin ? (
-          store.setTagsNavData({ title, path! }) && React.createElement(component!, props)
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: {
-                from: props.location,
-              },
-            }}
-          />
-        )
-      }
-    />
-  )
+const PrivateRoute = (
+  Comp: React.ComponentType,
+  item: IGloabalSpace.IRouteData
+) => {
+  if (!store.isLogin) {
+    return (
+      <Redirect to="/login" />
+    )
+  }
+  store.setTagsNavData({
+    path: item.path,
+    title: item.title
+  })
+  return <Comp />
 }
 
 const PageLayout = observer(() => {
@@ -44,6 +43,9 @@ const PageLayout = observer(() => {
           breadcrumbList={store.breadcrumbList}
           toggleCollapsed={store.toggleCollapsed}
         />
+        <TagsNavBar
+          tagsNavData={store.tagsNavData}
+        />
         <Layout.Content
           className="site-layout-background"
           style={{
@@ -54,8 +56,12 @@ const PageLayout = observer(() => {
         >
           <React.Suspense fallback={<Loading />}>
             <Switch>
-              {MenuList.map((d) => (
-                <PrivateRoute exact={true} path={d.path!} title={d.title} component={d.component} />
+              {RouteConfig.map((d) => (
+                <Route
+                  exact={true}
+                  path={d.path}
+                  render={() => PrivateRoute(d.component, d)}
+                />
               ))}
             </Switch>
           </React.Suspense>

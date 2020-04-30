@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Layout, Menu } from "antd"
+import MenuList from '@/mock/menuConfig'
 import { ClickParam } from "antd/lib/menu"
-import { MenuList } from '@/mock/menu'
 import { withRouter, RouteComponentProps } from "react-router-dom"
 import { Icon as LegacyIcon } from "@ant-design/compatible"
 
@@ -10,7 +10,7 @@ interface ISiderBarProps extends RouteComponentProps {
   handleMenu: (value: ClickParam) => void
 }
 
-const injectMenu = (MenuList: IMenuSpace.IMenuList[]) => {
+const injectMenu = (MenuList: IGloabalSpace.IMenuData[]) => {
   return MenuList.map((item) => {
     if (item.children && item.children.length) {
       return (

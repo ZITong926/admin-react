@@ -5,7 +5,7 @@ const RouteConfig: IGloabalSpace.IRouteData[] = [
     title: "首页",
     icon: "home",
     path: "/app",
-    component: React.lazy(() => import('@/'))
+    component: React.lazy(() => import('@/pages/dashboard'))
   },
   {
     title: "Form",

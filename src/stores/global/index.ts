@@ -1,6 +1,6 @@
 import Store from './store'
 import { action } from 'mobx'
-import MenuList from '@/mock/menu'
+import MenuList from '@/mock/menuConfig'
 import { ClickParam } from "antd/lib/menu"
 import { findRoute } from '@/utils/routeFunc'
 import { history } from '@/components/myBrowserRouter'
@@ -22,8 +22,18 @@ class GlobalStore extends Store {
     this.isLogin = !this.isLogin
   }
 
-  @action public setTagsNavData = (obj: { path: string, title: string } ) => {
-    //
+  @action public setTagsNavData = (obj: { title: string, path: string }) => {
+    const flag = this.tagsNavData.find(d => d.path === obj.path)
+    if(!flag){
+      this.tagsNavData.push(obj)
+    }
+    this.tagsNavData.forEach(d => {
+      if(d.path === obj.path){
+        d.color = 'primary'
+      }else{
+        d.color = 'default'
+      }
+    })
   }
 }
 
