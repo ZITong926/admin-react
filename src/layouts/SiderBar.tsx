@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Layout, Menu } from "antd"
-import MenuList from '@/mock/menuConfig'
+import MenuList from "@/mock/menuConfig"
 import { ClickParam } from "antd/lib/menu"
+import { DesktopOutlined } from '@ant-design/icons'
 import { withRouter, RouteComponentProps } from "react-router-dom"
-import { Icon as LegacyIcon } from "@ant-design/compatible"
 
 interface ISiderBarProps extends RouteComponentProps {
   collapsed: boolean
@@ -12,13 +12,13 @@ interface ISiderBarProps extends RouteComponentProps {
 
 const injectMenu = (MenuList: IGloabalSpace.IMenuData[]) => {
   return MenuList.map((item) => {
-    if (item.children && item.children.length) {
+    if (item.children && item.children.length > 0) {
       return (
         <Menu.SubMenu
-          key={item.path}
+          key={item.title}
           title={
             <span>
-              <LegacyIcon type={item.icon} />
+              <DesktopOutlined />
               <span>{item.title}</span>
             </span>
           }
@@ -29,7 +29,7 @@ const injectMenu = (MenuList: IGloabalSpace.IMenuData[]) => {
     }
     return (
       <Menu.Item key={item.path}>
-        <LegacyIcon type={item.icon} />
+        <DesktopOutlined />
         <span className="nav-text">{item.title}</span>
       </Menu.Item>
     )

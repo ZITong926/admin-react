@@ -22,6 +22,7 @@ class GlobalStore extends Store {
     this.isLogin = !this.isLogin
   }
 
+  // 添加tags
   @action public setTagsNavData = (obj: { title: string, path: string }) => {
     const flag = this.tagsNavData.find(d => d.path === obj.path)
     if(!flag){
@@ -34,6 +35,14 @@ class GlobalStore extends Store {
         d.color = 'default'
       }
     })
+  }
+
+  // 删除tags
+  @action public delOneTag = (item: IGloabalSpace.ITagsNavData) => {
+    const index = this.tagsNavData.findIndex(d => d.path === item.path)
+    if(index > -1){
+      this.tagsNavData.splice(index, 1)
+    }
   }
 }
 

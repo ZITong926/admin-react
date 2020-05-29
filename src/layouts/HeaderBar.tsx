@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Breadcrumb, Layout } from "antd"
-import { Icon } from "@ant-design/compatible"
 import { history } from "@/components/myBrowserRouter"
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons"
 
@@ -21,7 +20,7 @@ const HeaderBar = (props: IHeaderProps) => {
   const BreadcrumbElement = (
     <Breadcrumb className="admin-breadcrumb">
       <Breadcrumb.Item onClick={() => handleClick("/app")}>
-        <Icon type="home" />
+        <MenuUnfoldOutlined type="home" />
         <span>首页</span>
       </Breadcrumb.Item>
       {props.breadcrumbList.map((item, index) => {
@@ -30,7 +29,7 @@ const HeaderBar = (props: IHeaderProps) => {
             key={item.title + index}
             onClick={() => handleClick(item.path)}
           >
-            <Icon type={item.icon} />
+            <MenuUnfoldOutlined type={item.icon} />
             <span>{item.title}</span>
           </Breadcrumb.Item>
         )

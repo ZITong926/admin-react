@@ -1,14 +1,22 @@
 import { Tag } from "antd"
 import * as React from "react"
 
+import "./index.less"
+
 interface ITagsNavBarProps {
   tagsNavData: IGloabalSpace.ITagsNavData[]
+  delOneTag: (item: IGloabalSpace.ITagsNavData) => void
 }
 
 const TagsNavBar = (props: ITagsNavBarProps) => (
   <div className="tags-bar">
-    {props.tagsNavData.map((d) => (
-      <Tag>
+    {props.tagsNavData.map((d, i) => (
+      <Tag
+        key={d.path}
+        className="tag-bar-item"
+        closable={i > 0 ? true : false}
+        onClose={() => props.delOneTag(d)}
+      >
         <span className="tag-bar-circle" />
         <span className="tag-bar=title">{d.title}</span>
       </Tag>

@@ -1,7 +1,10 @@
-import * as React from 'react'
+import * as React from "react"
+import withTags from "@/hoc/WithTags"
 
-const DashBoard = () => {
-  return <div>DashBoard</div>
+class DashBoard extends React.Component {
+  public render() {
+    return <div>DashBoard</div>
+  }
 }
 
-export default DashBoard
+export default withTags(DashBoard)
