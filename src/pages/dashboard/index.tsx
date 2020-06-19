@@ -103,36 +103,26 @@ function App() {
   const [width, setWidth] = React.useState(0)
 
   return (
-    <GGEditor>
-      <div style={{ display: 'flex'}}>
-        <div style={{ width: 170, borderBottom: '1px solid #e8e8e8', borderRight: '1px solid #e8e8e8', textAlign: 'center', paddingTop:10 }}>
-          <h3>可拖拽节点</h3>
-        </div>
+    <GGEditor className="gg-editor-view">
+      <div className="editor-tools">
+        <div className="drag-node"><h3>可拖拽节点</h3></div>
         <div className="toolbar">
-          {FLOW_COMMAND_LIST.map((name, index) => {
-            if (name === "|") {
-              return <Divider key={index} type="vertical" />
-            }
-
-            return (
-              <Command
-                key={name}
-                name={name}
-                className="command"
-                disabledClassName="commandDisabled"
-              >
-                <Tooltip title={upperFirst(name)}>
-                  <IconFont type={`icon-${name}`} />
-                </Tooltip>
-              </Command>
-            )
-          })}
+          {FLOW_COMMAND_LIST.map((name, index) => name === '|' ?
+            <Divider key={index} type="vertical" />
+            : <Command
+              key={name}
+              name={name}
+              className="command"
+              disabledClassName="commandDisabled"
+            >
+              <Tooltip title={upperFirst(name)}>
+                <IconFont type={`icon-${name}`} />
+              </Tooltip>
+            </Command>
+          )}
         </div>
       </div>
-      <div
-        className="detailPanel"
-        style={{ width, border: width ? "1px solid #e8e8e8" : "none" }}
-      >
+      <div className="detailPanel" style={{ width, border: width ? "1px solid #e8e8e8" : "none" }}>
         <NodePanel />
       </div>
       <ItemPanel className="itemPanel">
@@ -141,12 +131,12 @@ function App() {
           type={ItemType.Node}
           model={{
             type: "node",
-            size: [120, 60],
+            size: [120, 42],
             label: "rect",
             shape: 'custom-node'
           }}
         >
-          <div className="dragRect">rect</div>
+          <div draggable={false}>rect</div>
         </Item>
       </ItemPanel>
       <Flow
@@ -165,14 +155,14 @@ function App() {
           console.log('node', node)
           setWidth(300)
         }}
-        graphConfig={{ defaultNode: { type: 'custom-node'} }}
+        graphConfig={{ defaultNode: { type: 'custom-node' } }}
       />
       <RegisterNode
         name="custom-node"
         config={{
           getCustomConfig() {
             return {
-              size: [120, 50]
+              size: [120, 42]
             }
           },
           getAnchorPoints() {
