@@ -4,6 +4,7 @@ declare namespace IGloabalSpace {
     icon: string
     title: string
     path: string
+    // component: any
     component: React.ComponentType
   }
 
