@@ -4,6 +4,7 @@ import * as React from "react"
 import "./index.less"
 
 interface ITagsNavBarProps {
+  currentTag: string
   tagsNavData: IGloabalSpace.ITagsNavData[]
   delOneTag: (item: IGloabalSpace.ITagsNavData) => void
 }
@@ -17,8 +18,8 @@ const TagsNavBar = (props: ITagsNavBarProps) => (
         closable={i > 0 ? true : false}
         onClose={() => props.delOneTag(d)}
       >
-        <span className="tag-bar-circle" />
-        <span className="tag-bar=title">{d.title}</span>
+        <span className={`tag-bar-circle-${d.color}`} />
+        <span className="tag-bar-title">{d.title}</span>
       </Tag>
     ))}
   </div>

@@ -1,5 +1,5 @@
 import Store from './store'
-import { action } from 'mobx'
+import { action, toJS } from 'mobx'
 import MenuList from '@/mock/menuConfig'
 import { ClickParam } from "antd/lib/menu"
 import { findRoute } from '@/utils/routeFunc'
@@ -42,6 +42,7 @@ class GlobalStore extends Store {
     const index = this.tagsNavData.findIndex(d => d.path === item.path)
     if(index > -1){
       this.tagsNavData.splice(index, 1)
+      history.push(this.tagsNavData[index - 1].path)
     }
   }
 }

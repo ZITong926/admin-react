@@ -1,12 +1,23 @@
 import * as React from 'react'
-import { Table, Tag } from "antd"
+import { Table, Tag, Button } from "antd"
+import { ColumnProps } from 'antd/lib/table'
+import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons"
 
-const columns = [
+import './index.less'
+
+interface TableDataSourceProps{
+  age: number
+  name: string
+  tags: string[]
+  address: string
+}
+
+const columns:Array<ColumnProps<TableDataSourceProps>> = [
   {
     title: "Name",
     dataIndex: "name",
     key: "name",
-    render: (text: React.ReactNode) => <a>{text}</a>,
+    render: (text) => <a>{text}</a>
   },
   {
     title: "Age",
@@ -22,9 +33,9 @@ const columns = [
     title: "Tags",
     key: "tags",
     dataIndex: "tags",
-    render: (tags: any[]) => (
+    render: (text) => (
       <span>
-        {tags.map((tag) => {
+        {text.map((tag: string) => {
           let color = tag.length > 5 ? "geekblue" : "green"
           if (tag === "loser") {
             color = "volcano"
@@ -41,10 +52,10 @@ const columns = [
   {
     title: "Action",
     key: "action",
-    render: (text: any, record: { name: React.ReactNode }) => (
+    render: (text, record, index) => (
       <span>
-        <a style={{ marginRight: 16 }}>Invite {record.name}</a>
-        <a>Delete</a>
+        <a style={{ marginRight: 16 }}><EditOutlined /></a>
+        <a><DeleteOutlined /></a>
       </span>
     ),
   },
@@ -72,8 +83,79 @@ const data = [
     address: "Sidney No. 1 Lake Park",
     tags: ["cool", "teacher"],
   },
+  {
+    key: "4",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "5",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "6",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "7",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "8",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "9",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+    {
+    key: "10",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "11",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
 ]
 
-const BTable = () => <Table columns={columns} dataSource={data} />
+const BTable = () => (
+  <div className="table-page">
+    <Button icon={<PlusOutlined />} type="primary">Add</Button>
+    <Table 
+      bordered={true} 
+      columns={columns} 
+      dataSource={data}
+      pagination={{
+        pageSize: 10,
+        total: data.length,
+        showSizeChanger: true,
+        showTotal: (total) => `共${total}条`
+      }}
+    />
+  </div>
+)
 
 export default BTable

@@ -13,5 +13,9 @@ export default class Store extends BaseStore {
   @observable public breadcrumbList: IObservableArray<IGloabalSpace.IBreadcrumbData> = [] as any
 
   // 路由配置
-  @observable public tagsNavData: IObservableArray<IGloabalSpace.ITagsNavData> = [] as any
+  @observable public tagsNavData: IObservableArray<IGloabalSpace.ITagsNavData> = [{
+    path: '/app',
+    title: '首页',
+    color: 'primary'
+  }] as any
 }
