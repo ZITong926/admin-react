@@ -1646,7 +1646,7 @@
 
 "@types/react-resizable@^1.7.2":
   version "1.7.2"
-  resolved "https://registry.npm.taobao.org/@types/react-resizable/download/@types/react-resizable-1.7.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact-resizable%2Fdownload%2F%40types%2Freact-resizable-1.7.2.tgz#ff7f6d67394abb6f64207fcc574ffccb932d8a97"
+  resolved "https://registry.npm.taobao.org/@types/react-resizable/download/@types/react-resizable-1.7.2.tgz#ff7f6d67394abb6f64207fcc574ffccb932d8a97"
   integrity sha1-/39tZzlKu29kIH/MV0/8y5Mtipc=
   dependencies:
     "@types/react" "*"
