@@ -1,5 +1,5 @@
 import Store from './store'
-import { action, toJS } from 'mobx'
+import { action } from 'mobx'
 import MenuList from '@/mock/menuConfig'
 import { ClickParam } from "antd/lib/menu"
 import { findRoute } from '@/utils/routeFunc'

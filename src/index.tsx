@@ -1,6 +1,7 @@
 import App from '@/routes'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import 'mobx-react-lite/batchingOptOut'
 import * as serviceWorker from './serviceWorker'
 
 import './index.less'

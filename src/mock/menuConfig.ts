@@ -5,16 +5,22 @@ const MenuList: IGloabalSpace.IMenuData[] = [
     path: "/app",
   },
   {
-    title: "Form",
+    title: "表单",
     icon: "home",
-    path: "/app/formboard",
+    children: [
+      {
+        title: "基础表单",
+        icon: "home",
+        path: "/app/formboard",
+      },
+    ],
   },
   {
-    title: "compass",
+    title: "表格",
     icon: "bars",
     children: [
       {
-        title: "Table",
+        title: "基础表格",
         icon: "home",
         path: "/app/tableboard",
       },

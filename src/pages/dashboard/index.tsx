@@ -3,6 +3,7 @@ import { NodePanel } from "./Panel"
 import { Divider, Tooltip } from "antd"
 import upperFirst from "lodash/upperFirst"
 import { createFromIconfontCN } from "@ant-design/icons"
+import WrappedClassComponent from "./WrappedClassComponent"
 // import { MindData } from 'gg-editor/lib/common/interfaces'
 import GGEditor, {
   Flow,
@@ -11,7 +12,7 @@ import GGEditor, {
   constants,
   Item,
   ItemPanel,
-  RegisterNode
+  RegisterNode,
 } from "gg-editor"
 
 import "./index.less"
@@ -105,24 +106,32 @@ function App() {
   return (
     <GGEditor className="gg-editor-view">
       <div className="editor-tools">
-        <div className="drag-node"><h3>可拖拽节点</h3></div>
+        <div className="drag-node">
+          <h3>可拖拽节点</h3>
+        </div>
         <div className="toolbar">
-          {FLOW_COMMAND_LIST.map((name, index) => name === '|' ?
-            <Divider key={index} type="vertical" />
-            : <Command
-              key={name}
-              name={name}
-              className="command"
-              disabledClassName="commandDisabled"
-            >
-              <Tooltip title={upperFirst(name)}>
-                <IconFont type={`icon-${name}`} />
-              </Tooltip>
-            </Command>
+          {FLOW_COMMAND_LIST.map((name, index) =>
+            name === "|" ? (
+              <Divider key={index} type="vertical" />
+            ) : (
+              <Command
+                key={name}
+                name={name}
+                className="command"
+                disabledClassName="commandDisabled"
+              >
+                <Tooltip title={upperFirst(name)}>
+                  <IconFont type={`icon-${name}`} />
+                </Tooltip>
+              </Command>
+            )
           )}
         </div>
       </div>
-      <div className="detailPanel" style={{ width, border: width ? "1px solid #e8e8e8" : "none" }}>
+      <div
+        className="detailPanel"
+        style={{ width, border: width ? "1px solid #e8e8e8" : "none" }}
+      >
         <NodePanel />
       </div>
       <ItemPanel className="itemPanel">
@@ -133,7 +142,7 @@ function App() {
             type: "node",
             size: [120, 42],
             label: "rect",
-            shape: 'custom-node'
+            shape: "custom-node",
           }}
         >
           <div draggable={false}>rect</div>
@@ -152,17 +161,17 @@ function App() {
           setWidth(0)
         }}
         onNodeDoubleClick={(node) => {
-          console.log('node', node)
+          console.log("node", node)
           setWidth(300)
         }}
-        graphConfig={{ defaultNode: { type: 'custom-node' } }}
+        graphConfig={{ defaultNode: { type: "custom-node" } }}
       />
       <RegisterNode
         name="custom-node"
         config={{
           getCustomConfig() {
             return {
-              size: [120, 42]
+              size: [120, 42],
             }
           },
           getAnchorPoints() {
@@ -205,6 +214,7 @@ function App() {
           )
         }}
       />
+      <WrappedClassComponent />
     </GGEditor>
   )
 }

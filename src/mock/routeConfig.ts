@@ -8,13 +8,13 @@ const RouteConfig: IGloabalSpace.IRouteData[] = [
     component: React.lazy(() => import('@/pages/dashboard'))
   },
   {
-    title: "Form",
+    title: "基础表单",
     icon: "home",
     path: "/app/formboard",
     component: React.lazy(() => import('@/pages/form'))
   },
   {
-    title: "Table",
+    title: "基础表格",
     icon: "home",
     path: "/app/tableboard",
     component: React.lazy(() => import('@/pages/table'))
