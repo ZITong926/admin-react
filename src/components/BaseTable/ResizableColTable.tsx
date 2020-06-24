@@ -1,8 +1,10 @@
-import { Table } from 'antd'
 import * as React from "react"
-// import { TableComponents } from "rc-table/lib/interface"
-import { TableProps, ColumnType, ColumnsType, ColumnProps } from "antd/lib/table"
-import { Resizable, ResizableProps, ResizeCallbackData } from "react-resizable"
+import { Table, Input } from "antd"
+import { ResizeCallbackData } from "react-resizable"
+import { header } from '@/components/BaseTable/ResizableHeader'
+import { TableProps, ColumnType, ColumnsType } from "antd/es/table"
+
+import './index.less'
 
 interface TableDataSourceProps {
   id: string
@@ -11,106 +13,113 @@ interface TableDataSourceProps {
   address: string
 }
 
-// interface HeaderCellProps extends ResizableProps {
-//   title?: string
-//   colSpan: number
-//   rowSpan: number
-//   className: string
-//   style: React.CSSProperties
-//   children: Array<undefined | string>
-// }
-
-interface BaseTableProps<T> extends TableProps<T> {
-  handleResize: (index: number) => (e: React.SyntheticEvent, data: ResizeCallbackData) => void
+interface EditableCellProps extends React.HtmlHTMLAttributes<HTMLElement>{
+  type: string
+  title: string
+  index: number
+  record: object
+  editing: boolean
+  dataIndex: string
+  children: Array<undefined | string>
 }
 
-// const body: TableComponents<object> = {
-//   header: {
-//     cell: ({ children, width, height, onResize, ...rest }: HeaderCellProps) => {
-//       return (
-//         <Resizable
-//           width={width}
-//           height={height}
-//           onResize={onResize}
-//           draggableOpts={{ enableUserSelectHack: false }}
-//           handle={
-//             <span
-//               className="react-resizable-handle"
-//               onClick={(e) => e.stopPropagation()}
-//             />
-//           }
-//         >
-//           <th {...rest}>{children[1]}</th>
-//         </Resizable>
-//       )
-//     }
-//   }
-// }
+interface BaseTableProps<T> extends TableProps<T> {
+  handleResize: (
+    index: number
+  ) => (e: React.SyntheticEvent, data: ResizeCallbackData) => void
+}
 
-export function BaseTable<T extends K, K>({
+export function BaseTable<T extends object>({
   columns,
   dataSource,
+  components,
   handleResize,
   ...rest
 }: BaseTableProps<T>) {
   const newColumns = columns!.map((col, index) => ({
     ...col,
-    onHeaderCell: (column: ColumnProps<TableDataSourceProps>) => ({
+    // onCell: (record: T) => ({
+    //   index,
+    //   record,
+    //   type: record,
+    //   title: col.title,
+    //   editing: false
+    // }),
+    onHeaderCell: (column: ColumnType<T>) => ({
+      height: 0,
       width: column.width,
       onResize: handleResize(index),
-    })
+    }),
   }))
-  return <Table<T> columns={newColumns} dataSource={dataSource} {...rest} />
+
+  
+
+  return (
+    <Table
+      dataSource={dataSource}
+      columns={newColumns as any}
+      components={{ header, ...preComponent }}
+      {...rest}
+    />
+  )
 }
 
 export default () => {
-  const [columns, setColumns] = React.useState<ColumnProps<TableDataSourceProps>[]>([
+  const [columns, setColumns] = React.useState<
+    ColumnsType<TableDataSourceProps>
+  >([
     {
       key: "id",
       dataIndex: "id",
       title: "id",
-      width: 200
+      width: 200,
     },
     {
       key: "title",
-      dataIndex: 'title',
+      dataIndex: "title",
       title: "title",
-      width: 300
+      width: 300,
     },
     {
       key: "address",
       dataIndex: "address",
       title: "address",
-      width: 400
+      width: 400,
     },
     {
       key: "age",
       dataIndex: "age",
       title: "age",
       width: 200,
-      defaultSortOrder: 'descend',
+      defaultSortOrder: "descend",
       sorter: (a, b) => a.age - b.age,
     },
   ])
 
   const dataSource: TableDataSourceProps[] = [
     {
-      id: '4421213232',
-      title: 'aaa',
-      address: '的苦瓜减肥的管理的风格',
-      age: 18
-    },    {
-      id: '4421213232',
-      title: 'aaa',
-      address: '的苦瓜减肥的管理的风格',
-      age: 20
-    }
+      id: "4421213232",
+      title: "aaa",
+      address: "的苦瓜减肥的管理的风格",
+      age: 18,
+    },
+    {
+      id: "4421213232",
+      title: "aaa",
+      address: "的苦瓜减肥的管理的风格",
+      age: 20,
+    },
   ]
 
-  const handleResize = (index: number): ((e: React.SyntheticEvent, data: ResizeCallbackData) => void) => (e, { size }) => {
+  const handleResize = (
+    index: number
+  ): ((e: React.SyntheticEvent, data: ResizeCallbackData) => void) => (
+    e,
+    { size }
+  ) => {
     const nextColumns = [...columns]
     nextColumns[index] = {
-      ...nextColumns,
+      ...nextColumns[index],
       width: size.width,
     }
     setColumns(nextColumns)
@@ -122,6 +131,7 @@ export default () => {
       bordered={true}
       columns={columns}
       dataSource={dataSource}
+      rowClassName="editable-row"
       handleResize={handleResize}
     />
   )

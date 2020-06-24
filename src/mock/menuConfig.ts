@@ -24,6 +24,11 @@ const MenuList: IGloabalSpace.IMenuData[] = [
         icon: "home",
         path: "/app/tableboard",
       },
+      {
+        title: "伸缩表格",
+        icon: "home",
+        path: "/app/resizetableboard",
+      },
     ],
   },
 ]

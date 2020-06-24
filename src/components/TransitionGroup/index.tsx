@@ -29,7 +29,7 @@ const WrapTransitionGroup = (props: ITransitionGroupProps) => {
             <List.Item>
               <Button
                 icon={<CloseOutlined />}
-                type="danger"
+                // type="danger"
                 onClick={() =>
                   setItem((items) => items.filter((item) => item.id !== d.id))
                 }
