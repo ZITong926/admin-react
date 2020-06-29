@@ -1,19 +1,10 @@
 import React from "react"
 import { NodePanel } from "./Panel"
 import { Divider, Tooltip } from "antd"
-import upperFirst from "lodash/upperFirst"
 import { createFromIconfontCN } from "@ant-design/icons"
-import WrappedClassComponent from "./WrappedClassComponent"
+// import WrappedClassComponent from "./WrappedClassComponent"
 // import { MindData } from 'gg-editor/lib/common/interfaces'
-import GGEditor, {
-  Flow,
-  Command,
-  ContextMenu,
-  constants,
-  Item,
-  ItemPanel,
-  RegisterNode,
-} from "gg-editor"
+import GGEditor, { Flow, Command, ContextMenu, constants, Item, ItemPanel, RegisterNode } from "gg-editor"
 
 import "./index.less"
 
@@ -114,17 +105,17 @@ function App() {
             name === "|" ? (
               <Divider key={index} type="vertical" />
             ) : (
-              <Command
-                key={name}
-                name={name}
-                className="command"
-                disabledClassName="commandDisabled"
-              >
-                <Tooltip title={upperFirst(name)}>
-                  <IconFont type={`icon-${name}`} />
-                </Tooltip>
-              </Command>
-            )
+                <Command
+                  key={name}
+                  name={name}
+                  className="command"
+                  disabledClassName="commandDisabled"
+                >
+                  <Tooltip title={_.upperFirst(name)}>
+                    <IconFont type={`icon-${name}`} />
+                  </Tooltip>
+                </Command>
+              )
           )}
         </div>
       </div>
@@ -206,7 +197,7 @@ function App() {
                 >
                   <div onClick={hide}>
                     <IconFont type={`icon-${name}`} />
-                    <span>{upperFirst(name)}</span>
+                    <span>{_.upperFirst(name)}</span>
                   </div>
                 </Command>
               ))}
@@ -214,7 +205,7 @@ function App() {
           )
         }}
       />
-      <WrappedClassComponent />
+      {/* <WrappedClassComponent /> */}
     </GGEditor>
   )
 }

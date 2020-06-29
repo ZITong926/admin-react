@@ -23,7 +23,7 @@ const RouteConfig: IGloabalSpace.IRouteData[] = [
     title: "伸缩表格",
     icon: 'home',
     path: '/app/resizetableboard',
-    component: React.lazy(() => import('@/components/BaseTable/ResizableColTable'))
+    component: React.lazy(() => import('@/pages/table/ResizableTable'))
   }
 ]
 

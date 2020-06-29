@@ -1,5 +1,5 @@
+import BaseStore from '../baseStore'
 import { observable, IObservableArray } from 'mobx'
-import BaseStore from '../BaseStore'
 
 export default class Store extends BaseStore {
 

@@ -1,3 +1,5 @@
+declare const _:_.LoDashStatic
+
 declare namespace IGloabalSpace {
 
   interface IRouteData {
@@ -10,7 +12,7 @@ declare namespace IGloabalSpace {
 
   interface IMenuData{
     title: string
-    path?: string 
+    path?: string
     icon: string
     children?: IMenuData[]
   }
@@ -25,5 +27,10 @@ declare namespace IGloabalSpace {
     path: string
     title: string
     color?: 'default' | 'primary'
+  }
+
+  interface ISelectValue{
+    text: string
+    value: string
   }
 }

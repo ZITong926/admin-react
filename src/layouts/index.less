@@ -1,40 +1,47 @@
-.trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.trigger:hover {
-  color: #1890ff;
-}
-
-.logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-
-.site-layout .site-layout-background {
-  background: #fff;
-}
-
 .layout {
   position: relative;
   height: 100%;
-}
 
-.pull-left {
-  float: left;
-}
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
 
-.pull-left .breadcrumb {
-  float: left;
-}
+  .site-layout {
+    .site-layout-background {
+      background: #fff;
 
-.admin-breadcrumb {
-  display: inline-block;
-  line-height: 64px;
-  height: 100%;
+      .pull-left {
+        float: left;
+
+        .trigger {
+          font-size: 18px;
+          line-height: 64px;
+          padding: 0 24px;
+          cursor: pointer;
+          transition: color 0.3s;
+        }
+
+        .trigger:hover {
+          color: #1890ff;
+        }
+      }
+
+      .breadcrumb {
+        float: left;
+
+        .admin-breadcrumb {
+          display: inline-block;
+          line-height: 64px;
+          height: 100%;
+        }
+      }
+    }
+
+    .main-window {
+      min-height: 280px;
+      margin: 24px 16px;
+    }
+  }
 }

@@ -23,17 +23,15 @@ const HeaderBar = (props: IHeaderProps) => {
         <HomeOutlined type="home" />
         <span>首页</span>
       </Breadcrumb.Item>
-      {props.breadcrumbList.map((item, index) => {
-        return (
-          <Breadcrumb.Item
-            key={item.title + index}
-            onClick={() => handleClick(item.path)}
-          >
-            <MenuUnfoldOutlined type={item.icon} />
-            <span>{item.title}</span>
-          </Breadcrumb.Item>
-        )
-      })}
+      {props.breadcrumbList.map((item, index) => (
+        <Breadcrumb.Item
+          key={item.title + index}
+          onClick={() => handleClick(item.path)}
+        >
+          <MenuUnfoldOutlined type={item.icon} />
+          <span>{item.title}</span>
+        </Breadcrumb.Item>
+      ))}
     </Breadcrumb>
   )
 
@@ -48,7 +46,7 @@ const HeaderBar = (props: IHeaderProps) => {
           }
         )}
       </div>
-      <div className="breadcrumb pull-left">{BreadcrumbElement}</div>
+      <div className="breadcrumb">{BreadcrumbElement}</div>
     </Layout.Header>
   )
 }
