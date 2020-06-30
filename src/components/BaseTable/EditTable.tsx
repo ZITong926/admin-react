@@ -46,11 +46,11 @@ const EditFormComponent = React.forwardRef<any, any>(
       switch (type) {
         case "input":
           return <Input ref={ref} {...rest} />
-        case "inputNumber":
-          return <InputNumber ref={ref} {...rest} />
+        case "input-number":
+          return <InputNumber ref={ref} {...rest} style={{ width: '100%' }} />
         case "select":
           return (
-            <Select ref={ref} {...rest} defaultOpen={true} autoFocus={true}>
+            <Select ref={ref} {...rest} open={true}>
               {selectValue!.map((t) => (
                 <Select.Option key={t} value={t}>
                   {t}
@@ -89,7 +89,7 @@ export const EditTableCell: React.FC<EditTableCellProps> = ({
 
   React.useEffect(() => {
     if (editing && ref.current) {
-      ref.current!.focus()
+      ref.current.focus()
     }
   }, [editing])
 
