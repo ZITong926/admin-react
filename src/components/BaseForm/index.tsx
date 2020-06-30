@@ -25,13 +25,13 @@ export interface FormFieldsProps {
   selectValue?: Array<{ text: string; value: string }>
 }
 
-interface SimpleFormProps extends FormProps {
+interface BaseFormProps extends FormProps {
   fields: FormFieldsProps[]
   handleFinished: (values: any) => void
 }
 
-const SimpleForm: React.FC<SimpleFormProps> = ({ fields, handleFinished, form }) => {
-  
+const BaseForm: React.FC<BaseFormProps> = ({ fields, handleFinished, form }) => {
+
   const renderType = (item: FormFieldsProps) => {
     switch (item.type) {
       case "select": // 有数据、可进行选择和搜索
@@ -113,4 +113,4 @@ const SimpleForm: React.FC<SimpleFormProps> = ({ fields, handleFinished, form })
   )
 }
 
-export default SimpleForm
+export default BaseForm

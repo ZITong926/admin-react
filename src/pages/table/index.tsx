@@ -1,8 +1,8 @@
 import * as React from "react"
 import { ColumnProps } from "antd/lib/table"
 import { Table, Tag, Button, Form } from "antd"
-import { FormFieldsProps } from "@/components/SimpleForm"
-import SimpleFormModal from "@/components/SimpleFormModal"
+import { FormFieldsProps } from "@/components/BaseForm"
+import BaseFormModal from "@/components/BaseFormModal"
 import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons"
 
 import "./index.less"
@@ -234,7 +234,7 @@ const BTable = () => {
           showTotal: (total) => `共${total}条`,
         }}
       />
-      <SimpleFormModal
+      <BaseFormModal
         form={form}
         title="添加数据"
         fields={fields}

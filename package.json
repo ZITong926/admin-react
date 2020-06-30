@@ -58,11 +58,8 @@
   },
   "devDependencies": {
     "@types/react-resizable": "^1.7.2",
-<<<<<<< HEAD
     "http-proxy-middleware": "^1.0.4",
-=======
     "axios": "^0.19.2",
->>>>>>> acaba606c6a51fbdaecdc4bb76693e42c511c8c0
     "react-resizable": "^1.10.1"
   }
 }

@@ -2,15 +2,15 @@ import { Modal } from "antd"
 import * as React from "react"
 import { ModalProps } from "antd/lib/modal"
 import { FormInstance } from "antd/lib/form"
-import SimpleForm, { FormFieldsProps } from "@/components/SimpleForm"
+import BaseForm, { FormFieldsProps } from "@/components/BaseForm"
 
-interface SimpleFormModalProps extends ModalProps {
+interface BaseFormModalProps extends ModalProps {
   form: FormInstance
   fields: FormFieldsProps[]
   handleCommit: (values: any) => void
 }
 
-const SimpleFormModal: React.FC<SimpleFormModalProps> = ({
+const BaseFormModal: React.FC<BaseFormModalProps> = ({
   form,
   title,
   fields,
@@ -32,10 +32,10 @@ const SimpleFormModal: React.FC<SimpleFormModalProps> = ({
       {children ? (
         React.cloneElement(children as any)
       ) : (
-        <SimpleForm form={form} fields={fields} handleFinished={handleCommit} />
+        <BaseForm form={form} fields={fields} handleFinished={handleCommit} />
       )}
     </Modal>
   )
 }
 
-export default SimpleFormModal
+export default BaseFormModal

@@ -1,10 +1,7 @@
 import axios from 'axios'
-<<<<<<< HEAD
 import { message } from 'antd'
-=======
 
 
->>>>>>> acaba606c6a51fbdaecdc4bb76693e42c511c8c0
 
 const service = axios.create({
 
@@ -17,7 +14,6 @@ service.interceptors.request.use(config => {
   return Promise.reject(err)
 })
 
-<<<<<<< HEAD
 // 相应拦截器
 service.interceptors.response.use(response => {
   if (response.status !== 200) {
@@ -72,7 +68,6 @@ service.interceptors.response.use(response => {
   }
   return Promise.reject(err.message)
 })
-=======
 // 响应拦截器
 service.interceptors.response.use(response => {
   const status = response.status
@@ -134,4 +129,3 @@ const showStatus = (status: number) => {
   }
   return `${message}，请检查网络或联系管理员！`
 }
->>>>>>> acaba606c6a51fbdaecdc4bb76693e42c511c8c0
