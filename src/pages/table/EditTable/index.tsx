@@ -8,6 +8,7 @@ import './index.less'
 import IconTools from "@/components/IconTools"
 import BaseForm from "@/components/BaseForm"
 import BaseFormModal from "@/components/BaseFormModal"
+import BaseFormDrawer from "@/components/BaseFormDrawer"
 
 interface TableDataSourceProps {
   id: string
@@ -25,6 +26,7 @@ interface IIEditColumnsProps {
 
 const ResiableTable = () => {
   const [visible, setVisible] = React.useState<boolean>(false)
+  const [visible1, setVisible1] = React.useState<boolean>(false)
   const [columns, setColumns] = React.useState<
     Array<ColumnProps<TableDataSourceProps> & IIEditColumnsProps>
   >([
@@ -117,8 +119,8 @@ const ResiableTable = () => {
 
   const handleSave = (record:TableDataSourceProps) => {
     const newDataSource = [...dataSource]
-    const index = dataSource.findIndex(t => t.id = record.id)
-    const item = dataSource[index]
+    const index = newDataSource.findIndex(t => t.id === record.id)
+    const item = newDataSource[index]
     newDataSource.splice(index, 1, {
       ...item,
       ...record
@@ -155,7 +157,9 @@ const ResiableTable = () => {
       name: 'edit',
       title: '编辑',
       disabled: false,
-      action: () => {}
+      action: () => {
+        setVisible1(!visible1)
+      }
     },
     {
       name: 'up',
@@ -235,6 +239,20 @@ const ResiableTable = () => {
           console.log('values', values)
         }}
         onCancel={() => setVisible(!visible)}
+      />
+      <BaseFormDrawer
+        width={720}
+        title="数据详情"
+        fields={fields}
+        multyRowCol={2}
+        spanWidth={24/2}
+        closable={false}
+        visible={visible1}
+        className="drawer-form"
+        onClose={() => setVisible1(!visible1)}
+        onFinish={(values)=>{
+          console.log('values', values)
+        }}
       />
     </div>
   )

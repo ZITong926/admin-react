@@ -30,6 +30,7 @@ export interface BaseFormProps extends FormProps {
   search?: boolean;
   spanWidth?: number;
   className?: string;
+  multyRowCol?: number
   fields: FormFieldsProps[];
   onFinish: (values: any) => void;
 }
@@ -42,6 +43,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
   spanWidth = 6,
   search,
   reset,
+  multyRowCol,
   ...rest
 }) => {
   const [form] = Form.useForm();
@@ -130,8 +132,8 @@ const BaseForm: React.FC<BaseFormProps> = ({
   };
 
   const renderLayout = () => {
+    const colSpan = { md: 8, sm: 24, lg: spanWidth };
     if (layout === "inline") {
-      const colSpan = { md: 8, sm: 24, lg: spanWidth };
       return (
         <Row gutter={{ md: 8, lg: 24, xl: 24 }} style={{ width: "100%" }}>
           {fields.map((d) => (
@@ -164,34 +166,83 @@ const BaseForm: React.FC<BaseFormProps> = ({
           {reset ? (
             <Col>
               <Form.Item>
-                <Button type="primary" onClick={() => form.resetFields()}>
+                <Button onClick={() => form.resetFields()}>
                   重置
                 </Button>
               </Form.Item>
             </Col>
           ) : null}
         </Row>
-      );
+      )
     } else {
       return (
         <React.Fragment>
-          {fields.map((d) => (
-            <Form.Item
-              key={d.name}
-              name={d.name}
-              label={d.label}
-              {...formItemLayout}
-              initialValue={d.initialValue}
-              rules={[
-                {
-                  required: !!d.required,
-                  message: `${d.label}值不为空!`,
-                },
-              ]}
-            >
-              {renderType(d)}
-            </Form.Item>
-          ))}
+          {multyRowCol ? (
+            <React.Fragment>
+              {_.chunk(fields, multyRowCol).map((d, i) => (
+                <Row key={i} gutter={{ md: 8, lg: 24, xl: 24 }} style={{ width: "100%" }}>
+                  {d.map(t => (
+                    <Col key={t.name} {...colSpan}>
+                      <Form.Item
+                        name={t.name}
+                        label={t.label}
+                        labelAlign="right"
+                        {...formItemLayout}
+                        initialValue={t.initialValue}
+                        rules={[
+                          {
+                            required: !!t.required,
+                            message: `${t.label}值不为空!`,
+                          },
+                        ]}
+                      >
+                        {renderType(t)}
+                      </Form.Item>
+                    </Col>
+                  ))}
+                </Row>
+              ))}
+              <Row align="middle" gutter={16} justify="end" style={{ width: '100%', paddingRight: 8 }}>
+                {search ? (
+                  <Col>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        查询
+                      </Button>
+                    </Form.Item>
+                  </Col>
+                ) : null}
+                {reset ? (
+                  <Col>
+                    <Form.Item>
+                      <Button onClick={() => form.resetFields()}>
+                        重置
+                      </Button>
+                    </Form.Item>
+                  </Col>
+                ) : null}
+              </Row>
+            </React.Fragment>
+          ) : <React.Fragment>
+              {fields.map((d) => (
+                <Form.Item
+                  key={d.name}
+                  name={d.name}
+                  label={d.label}
+                  {...formItemLayout}
+                  initialValue={d.initialValue}
+                  rules={[
+                    {
+                      required: !!d.required,
+                      message: `${d.label}值不为空!`,
+                    },
+                  ]}
+                >
+                  {renderType(d)}
+                </Form.Item>
+              ))}
+            </React.Fragment>
+          }
         </React.Fragment>
       );
     }

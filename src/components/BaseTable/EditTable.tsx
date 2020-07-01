@@ -50,7 +50,7 @@ const EditFormComponent = React.forwardRef<any, any>(
           return <InputNumber ref={ref} {...rest} style={{ width: '100%' }} />
         case "select":
           return (
-            <Select ref={ref} {...rest} open={true}>
+            <Select ref={ref} {...rest} open={true} autoFocus={true}>
               {selectValue!.map((t) => (
                 <Select.Option key={t} value={t}>
                   {t}
@@ -83,13 +83,13 @@ export const EditTableCell: React.FC<EditTableCellProps> = ({
   selectValue,
   ...rest
 }) => {
-  const ref = React.useRef<any>()
+  const refComp = React.useRef<any>()
   const [editing, setEditing] = React.useState<boolean>(false)
   const form = React.useContext(EditTableContext)
 
   React.useEffect(() => {
-    if (editing && ref.current) {
-      ref.current.focus()
+    if (editing) {
+      refComp.current.focus()
     }
   }, [editing])
 
@@ -101,8 +101,9 @@ export const EditTableCell: React.FC<EditTableCellProps> = ({
   const save = async () => {
     try {
       const values = await form.validateFields()
-      setEditing(!editing)
-      handleSave({ ...record, ...values })
+      console.log('aa')
+      // handleEdit()
+      // handleSave({ ...record, ...values })
     } catch (err) {
       message.error(err)
     }
@@ -113,7 +114,7 @@ export const EditTableCell: React.FC<EditTableCellProps> = ({
       {editing && editable ? (
         <EditFormComponent
           {...rest}
-          ref={ref}
+          ref={refComp}
           onBlur={save}
           dataIndex={dataIndex}
           selectValue={selectValue}
