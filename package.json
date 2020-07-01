@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/qs": "^6.9.3",
     "@types/react-resizable": "^1.7.2",
     "axios": "^0.19.2",
     "http-proxy-middleware": "^1.0.4",

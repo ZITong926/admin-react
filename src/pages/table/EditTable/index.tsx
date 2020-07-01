@@ -116,7 +116,7 @@ const ResiableTable = () => {
     const newDataSource = [...dataSource]
     const index = dataSource.findIndex(t => t.id = record.id)
     const item = dataSource[index]
-    newDataSource[index] = ({
+    newDataSource.splice(index, 1, {
       ...item,
       ...record
     })
