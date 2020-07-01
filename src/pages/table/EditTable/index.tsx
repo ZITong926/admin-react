@@ -6,6 +6,8 @@ import { BaseTable } from "@/components/BaseTable/ResizableColTable"
 
 import './index.less'
 import IconTools from "@/components/IconTools"
+import BaseForm from "@/components/BaseForm"
+import BaseFormModal from "@/components/BaseFormModal"
 
 interface TableDataSourceProps {
   id: string
@@ -22,6 +24,7 @@ interface IIEditColumnsProps {
 }
 
 const ResiableTable = () => {
+  const [visible, setVisible] = React.useState<boolean>(false)
   const [columns, setColumns] = React.useState<
     Array<ColumnProps<TableDataSourceProps> & IIEditColumnsProps>
   >([
@@ -144,7 +147,9 @@ const ResiableTable = () => {
       name: 'plus',
       title: '添加',
       disabled: false,
-      action: () => {}
+      action: () => {
+        setVisible(!visible)
+      }
     },
     {
       name: 'edit',
@@ -178,8 +183,39 @@ const ResiableTable = () => {
     }
   ]
 
+  const fields=[
+    {
+      name: 'title',
+      label: '标题',
+      required: true
+    },
+    {
+      name: 'sex',
+      label: '性别'
+    },
+    {
+      name: 'age',
+      label: '年龄'
+    },
+    {
+      name: 'address',
+      label: '地址'
+    },
+  ]
+
   return (
     <div className="edit-table">
+      <BaseForm
+        reset={true}
+        search={true}
+        spanWidth={5}
+        layout="inline"
+        fields={fields}
+        className="edit-table-search"
+        onFinish={(values) => {
+          console.log('values', values)
+        }}
+      />
       <IconTools gutter={16} style={{ margin: '10px 0 10px -8px' }} icons={icons} />
       <BaseTable
         rowKey="id"
@@ -190,6 +226,15 @@ const ResiableTable = () => {
         components={components}
         rowClassName="editable-row"
         handleResize={handleResize}
+      />
+      <BaseFormModal
+        title="添加数据"
+        fields={fields}
+        visible={visible}
+        onFinish={(values)=>{
+          console.log('values', values)
+        }}
+        onCancel={() => setVisible(!visible)}
       />
     </div>
   )

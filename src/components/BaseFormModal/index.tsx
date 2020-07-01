@@ -1,27 +1,22 @@
-import { Modal } from "antd"
-import * as React from "react"
-import { ModalProps } from "antd/lib/modal"
-import { FormInstance } from "antd/lib/form"
-import BaseForm, { FormFieldsProps } from "@/components/BaseForm"
+import * as React from "react";
+import { Modal, Form } from "antd";
+import { ModalProps } from "antd/lib/modal";
+import BaseForm, { BaseFormProps } from "@/components/BaseForm";
 
-interface BaseFormModalProps extends ModalProps {
-  form: FormInstance
-  fields: FormFieldsProps[]
-  handleCommit: (values: any) => void
-}
+type BaseFormModalProps = ModalProps & BaseFormProps;
 
 const BaseFormModal: React.FC<BaseFormModalProps> = ({
-  form,
   title,
-  fields,
   visible,
   children,
   onCancel,
-  handleCommit
+  ...rest
 }) => {
+  const [form] = Form.useForm();
+
   const handleonOk = () => {
-    form.submit()
-  }
+    form.submit();
+  };
   return (
     <Modal
       title={title}
@@ -32,10 +27,10 @@ const BaseFormModal: React.FC<BaseFormModalProps> = ({
       {children ? (
         React.cloneElement(children as any)
       ) : (
-        <BaseForm form={form} fields={fields} handleFinished={handleCommit} />
+        <BaseForm form={form} {...rest} />
       )}
     </Modal>
-  )
-}
+  );
+};
 
-export default BaseFormModal
+export default BaseFormModal;

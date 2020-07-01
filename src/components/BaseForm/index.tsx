@@ -1,42 +1,57 @@
-import * as React from "react"
-import { FormProps } from "antd/lib/form/Form"
-import { DataNode } from "rc-tree-select/lib/interface"
-import { Form, Select, Input, Spin, TreeSelect } from "antd"
-import { CheckedStrategy } from "rc-tree-select/lib/utils/strategyUtil"
+import * as React from "react";
+import { FormProps } from "antd/lib/form/Form";
+import { DataNode } from "rc-tree-select/lib/interface";
+import { CheckedStrategy } from "rc-tree-select/lib/utils/strategyUtil";
+import { Form, Select, Input, Spin, TreeSelect, Col, Row, Button } from "antd";
 
 export interface FormFieldsProps {
-  name: string
-  label: string
-  type?: string
-  multiple?: boolean
-  disabled?: boolean
-  fetching?: boolean
-  required?: boolean
-  allowClear?: boolean
-  placeholder?: string
-  showSearch?: boolean
-  initialValue?: any
-  treeData?: DataNode[]
-  filterOption?: boolean
-  labelInValue?: boolean
-  treeCheckable?: boolean
-  onSearch?: (value: string) => void
-  showCheckedStrategy?: CheckedStrategy
-  selectValue?: Array<{ text: string; value: string }>
+  name: string;
+  label: string;
+  type?: string;
+  multiple?: boolean;
+  disabled?: boolean;
+  fetching?: boolean;
+  required?: boolean;
+  allowClear?: boolean;
+  placeholder?: string;
+  showSearch?: boolean;
+  initialValue?: any;
+  treeData?: DataNode[];
+  filterOption?: boolean;
+  labelInValue?: boolean;
+  treeCheckable?: boolean;
+  onSearch?: (value: string) => void;
+  showCheckedStrategy?: CheckedStrategy;
+  selectValue?: Array<{ text: string; value: string }>;
 }
 
-interface BaseFormProps extends FormProps {
-  fields: FormFieldsProps[]
-  handleFinished: (values: any) => void
+export interface BaseFormProps extends FormProps {
+  reset?: boolean;
+  search?: boolean;
+  spanWidth?: number;
+  className?: string;
+  fields: FormFieldsProps[];
+  onFinish: (values: any) => void;
 }
 
-const BaseForm: React.FC<BaseFormProps> = ({ fields, handleFinished, form }) => {
+const BaseForm: React.FC<BaseFormProps> = ({
+  fields,
+  className,
+  size = "middle",
+  layout = "horizontal",
+  spanWidth = 6,
+  search,
+  reset,
+  ...rest
+}) => {
+  const [form] = Form.useForm();
 
   const renderType = (item: FormFieldsProps) => {
     switch (item.type) {
       case "select": // 有数据、可进行选择和搜索
         return (
           <Select
+            size={size}
             optionFilterProp="children"
             allowClear={!!item.allowClear}
             showSearch={!!item.showSearch}
@@ -54,10 +69,11 @@ const BaseForm: React.FC<BaseFormProps> = ({ fields, handleFinished, form }) => 
               </Select.Option>
             ))}
           </Select>
-        )
+        );
       case "search_select": // 无数据 根据输入的数据搜索
         return (
           <Select
+            size={size}
             onSearch={item.onSearch}
             disabled={!!item.disabled}
             allowClear={!!item.allowClear}
@@ -73,10 +89,11 @@ const BaseForm: React.FC<BaseFormProps> = ({ fields, handleFinished, form }) => 
               </Select.Option>
             ))}
           </Select>
-        )
+        );
       case "tree_select":
         return (
           <TreeSelect
+            size={size}
             treeData={item.treeData}
             onSearch={item.onSearch}
             multiple={!!item.multiple}
@@ -89,28 +106,102 @@ const BaseForm: React.FC<BaseFormProps> = ({ fields, handleFinished, form }) => 
               item.showCheckedStrategy ? item.showCheckedStrategy : "SHOW_CHILD"
             }
           />
-        )
+        );
       default:
         return (
-          <Input placeholder={item.placeholder ? item.placeholder : "请输入"} />
-        )
+          <Input
+            size={size}
+            style={{ width: "100%" }}
+            placeholder={item.placeholder ? item.placeholder : "请输入"}
+          />
+        );
     }
-  }
+  };
+
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 8 },
+      sm: { span: 6 },
+    },
+    wrapperCol: {
+      xs: { span: 16 },
+      sm: { span: 18 },
+    },
+  };
+
+  const renderLayout = () => {
+    if (layout === "inline") {
+      const colSpan = { md: 8, sm: 24, lg: spanWidth };
+      return (
+        <Row gutter={{ md: 8, lg: 24, xl: 24 }} style={{ width: "100%" }}>
+          {fields.map((d) => (
+            <Col key={d.name} {...colSpan}>
+              <Form.Item
+                name={d.name}
+                label={d.label}
+                {...formItemLayout}
+                initialValue={d.initialValue}
+                rules={[
+                  {
+                    required: !!d.required,
+                    message: `${d.label}值不为空!`,
+                  },
+                ]}
+              >
+                {renderType(d)}
+              </Form.Item>
+            </Col>
+          ))}
+          {search ? (
+            <Col>
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  查询
+                </Button>
+              </Form.Item>
+            </Col>
+          ) : null}
+          {reset ? (
+            <Col>
+              <Form.Item>
+                <Button type="primary" onClick={() => form.resetFields()}>
+                  重置
+                </Button>
+              </Form.Item>
+            </Col>
+          ) : null}
+        </Row>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          {fields.map((d) => (
+            <Form.Item
+              key={d.name}
+              name={d.name}
+              label={d.label}
+              {...formItemLayout}
+              initialValue={d.initialValue}
+              rules={[
+                {
+                  required: !!d.required,
+                  message: `${d.label}值不为空!`,
+                },
+              ]}
+            >
+              {renderType(d)}
+            </Form.Item>
+          ))}
+        </React.Fragment>
+      );
+    }
+  };
 
   return (
-    <Form form={form} onFinish={handleFinished}>
-      {fields.map((t) => (
-        <Form.Item
-          key={t.name}
-          name={t.name}
-          label={t.label}
-          required={!!t.required}
-        >
-          {renderType(t)}
-        </Form.Item>
-      ))}
+    <Form layout={layout} form={form} className={className} {...rest}>
+      {renderLayout()}
     </Form>
-  )
-}
+  );
+};
 
-export default BaseForm
+export default BaseForm;

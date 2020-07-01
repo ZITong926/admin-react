@@ -239,7 +239,7 @@ const BTable = () => {
         title="添加数据"
         fields={fields}
         visible={visible}
-        handleCommit={handleAddCommit}
+        onFinish={handleAddCommit}
         onCancel={() => setVisible(!visible)}
       />
     </div>
