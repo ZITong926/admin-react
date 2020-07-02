@@ -25,6 +25,10 @@ interface IIEditColumnsProps {
 }
 
 const ResiableTable = () => {
+  const ref = React.useRef<TableDataSourceProps[]>()
+  const refColumns = React.useRef<
+    Array<ColumnProps<TableDataSourceProps> & IIEditColumnsProps>
+  >()
   const [visible, setVisible] = React.useState<boolean>(false)
   const [visible1, setVisible1] = React.useState<boolean>(false)
   const [columns, setColumns] = React.useState<
@@ -110,7 +114,7 @@ const ResiableTable = () => {
     e,
     { size }
   ) => {
-    const nextColumns = [...columns]
+    const nextColumns = [...refColumns.current!]
     nextColumns[index] = {
       ...nextColumns[index],
       width: size.width
@@ -119,7 +123,7 @@ const ResiableTable = () => {
   }
 
   const handleSave = (record: TableDataSourceProps) => {
-    const newDataSource = [...dataSource]
+    const newDataSource = [...ref.current!]
     const index = newDataSource.findIndex((t) => t.id === record.id)
     const item = newDataSource[index]
     newDataSource.splice(index, 1, {
@@ -128,6 +132,14 @@ const ResiableTable = () => {
     })
     setDataSource(newDataSource)
   }
+
+  React.useEffect(() => {
+    ref.current = dataSource
+  }, [dataSource])
+
+  React.useEffect(() => {
+    refColumns.current = columns
+  }, [columns])
 
   React.useEffect(() => {
     const newColumns = columns.map((d) => ({
@@ -251,8 +263,8 @@ const ResiableTable = () => {
         search={true}
         title="数据详情"
         fields={fields}
+        spanWidth={12}
         multyRowCol={2}
-        spanWidth={24 / 2}
         layout="vertical"
         closable={false}
         visible={visible1}

@@ -43,7 +43,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,less}": [
       "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,less,md}\"",
-      "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json,css,scss,less,md}\""
+      "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\""
     ]
   },
   "scripts": {
@@ -51,7 +51,8 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,less,md}\""
+    "eslint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,less,md}\""
   },
   "browserslist": {
     "production": [
