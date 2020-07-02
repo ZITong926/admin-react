@@ -35,14 +35,21 @@
     "react-transition-group": "^4.3.0",
     "typescript": "^3.8.3"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,less}": [
+      "prettier --write"
+    ]
+  },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -60,7 +67,10 @@
     "@types/qs": "^6.9.3",
     "@types/react-resizable": "^1.7.2",
     "axios": "^0.19.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "http-proxy-middleware": "^1.0.4",
+    "prettier": "^2.0.5",
     "react-resizable": "^1.10.1"
   }
 }

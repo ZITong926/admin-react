@@ -1,5 +1,5 @@
-import * as React from "react";
-import { DataNode } from "rc-tree-select/lib/interface";
+import * as React from 'react'
+import { DataNode } from 'rc-tree-select/lib/interface'
 import { FormProps, FormInstance } from "antd/lib/form/Form";
 import { CheckedStrategy } from "rc-tree-select/lib/utils/strategyUtil";
 import { Form, Select, Input, Spin, TreeSelect, Col, Row, Button } from "antd";

@@ -14,7 +14,7 @@ module.exports = override(
     // modifyVars: { '@primary-color': '#e64e14' }
   }),
   addWebpackAlias({
-    '@': path.resolve(__dirname, 'src')
+    '@': path.resolve(__dirname, 'src'),
   }),
   addWebpackPlugin(new webpack.ProvidePlugin({
     _: 'lodash'
