@@ -2106,7 +2106,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
 
 antd@^4.4.0:
   version "4.4.0"
-  resolved "https://registry.npm.taobao.org/antd/download/antd-4.4.0.tgz?cache=0&sync_timestamp=1593496506885&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fantd%2Fdownload%2Fantd-4.4.0.tgz#10df07ad1bb30d54ffbd45926107f3f399f96e89"
+  resolved "https://registry.npm.taobao.org/antd/download/antd-4.4.0.tgz?cache=0&sync_timestamp=1593496562130&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fantd%2Fdownload%2Fantd-4.4.0.tgz#10df07ad1bb30d54ffbd45926107f3f399f96e89"
   integrity sha1-EN8HrRuzDVT/vUWSYQfz85n5bok=
   dependencies:
     "@ant-design/css-animation" "^1.7.2"

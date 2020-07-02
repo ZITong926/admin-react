@@ -1,6 +1,6 @@
 import * as React from "react";
-import { FormProps } from "antd/lib/form/Form";
 import { DataNode } from "rc-tree-select/lib/interface";
+import { FormProps, FormInstance } from "antd/lib/form/Form";
 import { CheckedStrategy } from "rc-tree-select/lib/utils/strategyUtil";
 import { Form, Select, Input, Spin, TreeSelect, Col, Row, Button } from "antd";
 
@@ -120,7 +120,14 @@ const BaseForm: React.FC<BaseFormProps> = ({
     }
   };
 
-  const formItemLayout = {
+  const formItemLayout = layout === 'vertical' && multyRowCol ? {
+    labelCol: {
+      span: 24
+    },
+    wrapperCol: {
+      span: 24
+    }
+  } : {
     labelCol: {
       xs: { span: 8 },
       sm: { span: 6 },
@@ -131,7 +138,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
     },
   };
 
-  const renderLayout = () => {
+  const renderLayout = (insForm: FormInstance) => {
     const colSpan = { md: 8, sm: 24, lg: spanWidth };
     if (layout === "inline") {
       return (
@@ -166,7 +173,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
           {reset ? (
             <Col>
               <Form.Item>
-                <Button onClick={() => form.resetFields()}>
+                <Button onClick={() => insForm.resetFields()}>
                   重置
                 </Button>
               </Form.Item>
@@ -215,7 +222,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
                 {reset ? (
                   <Col>
                     <Form.Item>
-                      <Button onClick={() => form.resetFields()}>
+                      <Button onClick={() => insForm.resetFields()}>
                         重置
                       </Button>
                     </Form.Item>
@@ -250,7 +257,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
 
   return (
     <Form layout={layout} form={form} className={className} {...rest}>
-      {renderLayout()}
+      {renderLayout(rest.form ? rest.form : form)}
     </Form>
   );
 };

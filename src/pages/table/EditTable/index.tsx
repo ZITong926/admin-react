@@ -1,14 +1,14 @@
 import * as React from "react"
 import { ColumnProps } from "antd/lib/table"
+import BaseForm from "@/components/BaseForm"
+import IconTools from "@/components/IconTools"
 import { ResizeCallbackData } from "react-resizable"
+import BaseFormModal from "@/components/BaseFormModal"
+import BaseFormDrawer from "@/components/BaseFormDrawer"
 import { components } from '@/components/BaseTable/EditTable'
 import { BaseTable } from "@/components/BaseTable/ResizableColTable"
 
 import './index.less'
-import IconTools from "@/components/IconTools"
-import BaseForm from "@/components/BaseForm"
-import BaseFormModal from "@/components/BaseFormModal"
-import BaseFormDrawer from "@/components/BaseFormDrawer"
 
 interface TableDataSourceProps {
   id: string
@@ -71,8 +71,9 @@ const ResiableTable = () => {
       align: 'center',
       editable: true,
       type: 'input-number',
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.age - b.age,
+      sorter: true
+      // defaultSortOrder: "descend",
+      // sorter: (a, b) => a.age - b.age,
     },
     {
       key: "address",
@@ -242,10 +243,13 @@ const ResiableTable = () => {
       />
       <BaseFormDrawer
         width={720}
+        reset={true}
+        search={true}
         title="数据详情"
         fields={fields}
         multyRowCol={2}
         spanWidth={24/2}
+        layout="vertical"
         closable={false}
         visible={visible1}
         className="drawer-form"
