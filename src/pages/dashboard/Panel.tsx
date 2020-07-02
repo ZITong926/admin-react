@@ -8,11 +8,11 @@ import { DetailPanelComponentProps } from 'gg-editor/lib/components/DetailPanel'
 
 const formItemLayout = {
   labelCol: {
-    span: 5,
+    span: 5
   },
   wrapperCol: {
-    span: 19,
-  },
+    span: 19
+  }
 }
 
 interface PanelProps
@@ -46,8 +46,8 @@ class Panel extends React.Component<PanelProps, PanelState> {
     executeCommand('update', {
       id: item.get('id'),
       updateModel: {
-        ...values,
-      },
+        ...values
+      }
     })
   }
 
@@ -60,8 +60,8 @@ class Panel extends React.Component<PanelProps, PanelState> {
         fields={[
           {
             name: 'label',
-            value: type === 'node' ? nodes[0].getModel().label : '',
-          },
+            value: type === 'node' ? nodes[0].getModel().label : ''
+          }
         ]}
       >
         <Form.Item label="Label" name="label" {...formItemLayout}>

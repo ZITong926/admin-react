@@ -6,7 +6,7 @@ const {
   addLessLoader,
   addWebpackAlias,
   useEslintRc,
-  addWebpackPlugin,
+  addWebpackPlugin
 } = require('customize-cra')
 
 module.exports = override(
@@ -14,18 +14,18 @@ module.exports = override(
   fixBabelImports('import', {
     libraryName: 'antd',
     libraryDirectory: 'es',
-    style: true,
+    style: true
   }),
   addLessLoader({
-    javascriptEnabled: true,
+    javascriptEnabled: true
     // modifyVars: { '@primary-color': '#e64e14' }
   }),
   addWebpackAlias({
-    '@': path.resolve(__dirname, 'src'),
+    '@': path.resolve(__dirname, 'src')
   }),
   addWebpackPlugin(
     new webpack.ProvidePlugin({
-      _: 'lodash',
+      _: 'lodash'
     })
   )
 )

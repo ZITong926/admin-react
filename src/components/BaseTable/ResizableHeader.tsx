@@ -38,5 +38,5 @@ export const ResizableHeader: React.FC<ResizableHeaderCellProps> = ({
 }
 
 export const header = {
-  cell: ResizableHeader,
+  cell: ResizableHeader
 }

@@ -124,21 +124,21 @@ const BaseForm: React.FC<BaseFormProps> = ({
     layout === 'vertical' && multyRowCol
       ? {
           labelCol: {
-            span: 24,
+            span: 24
           },
           wrapperCol: {
-            span: 24,
-          },
+            span: 24
+          }
         }
       : {
           labelCol: {
             xs: { span: 8 },
-            sm: { span: 6 },
+            sm: { span: 6 }
           },
           wrapperCol: {
             xs: { span: 16 },
-            sm: { span: 18 },
-          },
+            sm: { span: 18 }
+          }
         }
 
   const renderLayout = (insForm: FormInstance) => {
@@ -156,8 +156,8 @@ const BaseForm: React.FC<BaseFormProps> = ({
                 rules={[
                   {
                     required: !!d.required,
-                    message: `${d.label}值不为空!`,
-                  },
+                    message: `${d.label}值不为空!`
+                  }
                 ]}
               >
                 {renderType(d)}
@@ -204,8 +204,8 @@ const BaseForm: React.FC<BaseFormProps> = ({
                         rules={[
                           {
                             required: !!t.required,
-                            message: `${t.label}值不为空!`,
-                          },
+                            message: `${t.label}值不为空!`
+                          }
                         ]}
                       >
                         {renderType(t)}
@@ -252,8 +252,8 @@ const BaseForm: React.FC<BaseFormProps> = ({
                   rules={[
                     {
                       required: !!d.required,
-                      message: `${d.label}值不为空!`,
-                    },
+                      message: `${d.label}值不为空!`
+                    }
                   ]}
                 >
                   {renderType(d)}

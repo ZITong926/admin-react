@@ -20,7 +20,7 @@ export default class Store extends BaseStore {
     {
       path: '/app',
       title: '首页',
-      color: 'primary',
-    },
+      color: 'primary'
+    }
   ] as any
 }

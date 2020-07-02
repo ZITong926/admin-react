@@ -6,7 +6,7 @@ import {
   SaveOutlined,
   DownOutlined,
   PlusOutlined,
-  DeleteOutlined,
+  DeleteOutlined
 } from '@ant-design/icons'
 
 interface IIconToolsProps {

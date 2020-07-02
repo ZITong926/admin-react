@@ -4,7 +4,7 @@ import { history } from '@/components/myBrowserRouter'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  HomeOutlined,
+  HomeOutlined
 } from '@ant-design/icons'
 
 interface IHeaderProps {
@@ -46,7 +46,7 @@ const HeaderBar = (props: IHeaderProps) => {
           props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
           {
             className: 'trigger',
-            onClick: props.toggleCollapsed,
+            onClick: props.toggleCollapsed
           }
         )}
       </div>

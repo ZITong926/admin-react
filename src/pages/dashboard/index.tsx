@@ -11,7 +11,7 @@ import GGEditor, {
   constants,
   Item,
   ItemPanel,
-  RegisterNode,
+  RegisterNode
 } from 'gg-editor'
 
 import './index.less'
@@ -19,7 +19,7 @@ import './index.less'
 const { EditorCommand, ItemType } = constants
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: 'https://at.alicdn.com/t/font_1518433_oa5sw7ezue.js',
+  scriptUrl: 'https://at.alicdn.com/t/font_1518433_oa5sw7ezue.js'
 })
 
 const FLOW_COMMAND_LIST = [
@@ -31,7 +31,7 @@ const FLOW_COMMAND_LIST = [
   EditorCommand.Remove,
   '|',
   EditorCommand.ZoomIn,
-  EditorCommand.ZoomOut,
+  EditorCommand.ZoomOut
 ]
 
 // const MIND_COMMAND_LIST = [
@@ -58,23 +58,23 @@ const flowData = {
       id: '0',
       label: 'Node',
       x: 50,
-      y: 50,
+      y: 50
     },
     {
       id: '1',
       label: 'Node',
       x: 50,
-      y: 200,
-    },
+      y: 200
+    }
   ],
   edges: [
     {
       source: '0',
       sourceAnchor: 1,
       target: '1',
-      targetAnchor: 0,
-    },
-  ],
+      targetAnchor: 0
+    }
+  ]
 }
 
 // const mindData: MindData = {
@@ -141,7 +141,7 @@ function App() {
             type: 'node',
             size: [120, 42],
             label: 'rect',
-            shape: 'custom-node',
+            shape: 'custom-node'
           }}
         >
           <div draggable={false}>rect</div>
@@ -170,15 +170,15 @@ function App() {
         config={{
           getCustomConfig() {
             return {
-              size: [120, 42],
+              size: [120, 42]
             }
           },
           getAnchorPoints() {
             return [
               [0.5, 0],
-              [0.5, 1],
+              [0.5, 1]
             ]
-          },
+          }
         }}
         extend="bizFlowNode"
       />
@@ -195,7 +195,7 @@ function App() {
               {[
                 EditorCommand.Undo,
                 EditorCommand.Redo,
-                EditorCommand.PasteHere,
+                EditorCommand.PasteHere
               ].map((name) => (
                 <Command
                   key={name}

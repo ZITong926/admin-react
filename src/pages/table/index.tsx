@@ -20,22 +20,22 @@ const columns: Array<ColumnProps<TableDataSourceProps>> = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <a>{text}</a>,
+    render: (text) => <a>{text}</a>
   },
   {
     title: 'Age',
     dataIndex: 'age',
-    key: 'age',
+    key: 'age'
   },
   {
     title: 'Sex',
     dataIndex: 'sex',
-    key: 'sex',
+    key: 'sex'
   },
   {
     title: 'Address',
     dataIndex: 'address',
-    key: 'address',
+    key: 'address'
   },
   {
     title: 'Tags',
@@ -55,7 +55,7 @@ const columns: Array<ColumnProps<TableDataSourceProps>> = [
           )
         })}
       </span>
-    ),
+    )
   },
   {
     title: 'Action',
@@ -69,8 +69,8 @@ const columns: Array<ColumnProps<TableDataSourceProps>> = [
           <DeleteOutlined />
         </a>
       </span>
-    ),
-  },
+    )
+  }
 ]
 
 const data = [
@@ -80,7 +80,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+    tags: ['nice', 'developer']
   },
   {
     key: '2',
@@ -88,7 +88,7 @@ const data = [
     age: 42,
     sex: '男',
     address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    tags: ['loser']
   },
   {
     key: '3',
@@ -96,7 +96,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '4',
@@ -104,7 +104,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '5',
@@ -112,7 +112,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '6',
@@ -120,7 +120,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '7',
@@ -128,7 +128,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '8',
@@ -136,7 +136,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '9',
@@ -144,7 +144,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '10',
@@ -152,7 +152,7 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cool', 'teacher']
   },
   {
     key: '11',
@@ -160,8 +160,8 @@ const data = [
     age: 32,
     sex: '男',
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
+    tags: ['cool', 'teacher']
+  }
 ]
 
 const BTable = () => {
@@ -178,7 +178,7 @@ const BTable = () => {
     setTimeout(() => {
       setDataSelect([
         { text: '小王', value: 'xiao wang' },
-        { text: '小李', value: 'xiao li' },
+        { text: '小李', value: 'xiao li' }
       ] as any)
       setFetching(false)
     }, 2000)
@@ -192,15 +192,15 @@ const BTable = () => {
       showSearch: true,
       type: 'search_select',
       selectValue: dataSelect,
-      onSearch: handleOnSearch,
+      onSearch: handleOnSearch
     },
     {
       label: '年龄',
-      name: 'age',
+      name: 'age'
     },
     {
       label: '地址',
-      name: 'address',
+      name: 'address'
     },
     {
       label: '性别',
@@ -209,9 +209,9 @@ const BTable = () => {
       type: 'select',
       selectValue: [
         { text: '男', value: 'man' },
-        { text: '女', value: 'woman' },
-      ],
-    },
+        { text: '女', value: 'woman' }
+      ]
+    }
   ]
 
   return (
@@ -231,7 +231,7 @@ const BTable = () => {
           pageSize: 10,
           total: data.length,
           showSizeChanger: true,
-          showTotal: (total) => `共${total}条`,
+          showTotal: (total) => `共${total}条`
         }}
       />
       <BaseFormModal

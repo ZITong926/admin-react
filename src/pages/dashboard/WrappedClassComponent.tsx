@@ -19,7 +19,7 @@ class WrappedClassComponent extends React.Component<
             'minimapContainer'
           ) as HTMLDivElement,
           size: [196, 200], // 需设置宽高
-          className: 'minimapClass', // 自定义的样式类
+          className: 'minimapClass' // 自定义的样式类
         })
       )
       graph.paint()

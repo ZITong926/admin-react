@@ -5,14 +5,14 @@ export default function asynComponent(importComponent: any) {
     public constructor(props: any) {
       super(props)
       this.state = {
-        component: null,
+        component: null
       }
     }
 
     public componentDidMount() {
       importComponent().then((mod: any) => {
         this.setState({
-          component: mod.default ? mod.default : mod,
+          component: mod.default ? mod.default : mod
         })
       })
     }

@@ -20,7 +20,7 @@ const findRouteTitle = (
         breadcrumbList.push({
           icon: d.icon,
           title: d.title,
-          path: arrPath[arrPath.length - 1],
+          path: arrPath[arrPath.length - 1]
         })
       }
     }

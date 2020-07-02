@@ -24,8 +24,8 @@ export function BaseTable<T extends object>({
     onHeaderCell: (column: ColumnType<T>) => ({
       height: 0,
       width: column.width,
-      onResize: handleResize(index),
-    }),
+      onResize: handleResize(index)
+    })
   }))
 
   return (

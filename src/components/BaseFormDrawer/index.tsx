@@ -8,7 +8,7 @@ type BaseFormDrawerProps = DrawerProps & BaseFormProps
 
 const FooterComp = ({
   form,
-  onClose,
+  onClose
 }: {
   onClose: (e: any) => void
   form: FormInstance

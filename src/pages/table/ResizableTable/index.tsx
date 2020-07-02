@@ -20,19 +20,19 @@ const ResiableTable = () => {
       key: 'id',
       dataIndex: 'id',
       title: 'id',
-      width: 200,
+      width: 200
     },
     {
       key: 'title',
       dataIndex: 'title',
       title: 'title',
-      width: 300,
+      width: 300
     },
     {
       key: 'address',
       dataIndex: 'address',
       title: 'address',
-      width: 400,
+      width: 400
     },
     {
       key: 'age',
@@ -40,8 +40,8 @@ const ResiableTable = () => {
       title: 'age',
       width: 200,
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.age - b.age,
-    },
+      sorter: (a, b) => a.age - b.age
+    }
   ])
 
   const dataSource: TableDataSourceProps[] = [
@@ -49,14 +49,14 @@ const ResiableTable = () => {
       id: '4421213232',
       title: 'aaa',
       address: '的苦瓜减肥的管理的风格',
-      age: 18,
+      age: 18
     },
     {
       id: '4421213232',
       title: 'aaa',
       address: '的苦瓜减肥的管理的风格',
-      age: 20,
-    },
+      age: 20
+    }
   ]
 
   const handleResize = (
@@ -68,7 +68,7 @@ const ResiableTable = () => {
     const nextColumns = [...columns]
     nextColumns[index] = {
       ...nextColumns[index],
-      width: size.width,
+      width: size.width
     }
     setColumns(nextColumns)
   }

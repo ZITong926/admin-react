@@ -135,6 +135,6 @@ const NormalCell: React.FC<any> = ({ children, ...rest }) => (
 export const components = {
   body: {
     row: EditTableRow,
-    cell: EditTableCell,
-  },
+    cell: EditTableCell
+  }
 }

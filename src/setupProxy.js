@@ -6,8 +6,8 @@ module.exports = function (app) {
       target: 'http://localhost:3000',
       changeOrigin: true,
       pathRewrite: {
-        '^/api': '',
-      },
+        '^/api': ''
+      }
     })
   )
 }

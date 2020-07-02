@@ -20,8 +20,8 @@ export default (urlHead?: string): HttpReqUrl => (
     params = qs.stringify(params)
     config = {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     }
     return http(
       (urlHead || '') + (urlEnd || ''),
@@ -31,8 +31,8 @@ export default (urlHead?: string): HttpReqUrl => (
   } else if (headers === 'form-data') {
     config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+        'Content-Type': 'multipart/form-data'
+      }
     }
     return http(
       (urlHead || '') + (urlEnd || ''),

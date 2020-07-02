@@ -1,4 +1,6 @@
+.git/
 build/
+.vscode/
 node_modules/
 src/serviceWorker.ts
 package.json

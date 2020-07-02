@@ -36,14 +36,14 @@ const ResiableTable = () => {
       title: '序号',
       width: 60,
       align: 'center',
-      render: (text, record, index) => `${index + 1}`,
+      render: (text, record, index) => `${index + 1}`
     },
     {
       key: 'id',
       dataIndex: 'id',
       title: 'id',
       width: 200,
-      align: 'center',
+      align: 'center'
     },
     {
       key: 'title',
@@ -51,7 +51,7 @@ const ResiableTable = () => {
       title: '标题',
       width: 300,
       align: 'center',
-      editable: true,
+      editable: true
     },
     {
       key: 'sex',
@@ -61,7 +61,7 @@ const ResiableTable = () => {
       width: 100,
       type: 'select',
       editable: true,
-      selectValue: ['男', '女'],
+      selectValue: ['男', '女']
     },
     {
       key: 'age',
@@ -71,7 +71,7 @@ const ResiableTable = () => {
       align: 'center',
       editable: true,
       type: 'input-number',
-      sorter: true,
+      sorter: true
       // defaultSortOrder: "descend",
       // sorter: (a, b) => a.age - b.age,
     },
@@ -83,8 +83,8 @@ const ResiableTable = () => {
       editable: true,
       align: 'center',
       type: 'select',
-      selectValue: ['湖北', '上海', '北京'],
-    },
+      selectValue: ['湖北', '上海', '北京']
+    }
   ])
 
   const [dataSource, setDataSource] = React.useState<TableDataSourceProps[]>([
@@ -93,15 +93,15 @@ const ResiableTable = () => {
       title: 'aaa',
       address: '河南',
       age: 18,
-      sex: '男',
+      sex: '男'
     },
     {
       id: '052d',
       title: 'aaa',
       address: '江西',
       age: 20,
-      sex: '男',
-    },
+      sex: '男'
+    }
   ])
 
   const handleResize = (
@@ -113,7 +113,7 @@ const ResiableTable = () => {
     const nextColumns = [...columns]
     nextColumns[index] = {
       ...nextColumns[index],
-      width: size.width,
+      width: size.width
     }
     setColumns(nextColumns)
   }
@@ -124,7 +124,7 @@ const ResiableTable = () => {
     const item = newDataSource[index]
     newDataSource.splice(index, 1, {
       ...item,
-      ...record,
+      ...record
     })
     setDataSource(newDataSource)
   }
@@ -138,8 +138,8 @@ const ResiableTable = () => {
         type: d.type,
         editable: d.editable,
         dataIndex: d.dataIndex,
-        selectValue: d.selectValue,
-      }),
+        selectValue: d.selectValue
+      })
     }))
     setColumns(newColumns as any)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -152,7 +152,7 @@ const ResiableTable = () => {
       disabled: false,
       action: () => {
         setVisible(!visible)
-      },
+      }
     },
     {
       name: 'edit',
@@ -160,52 +160,52 @@ const ResiableTable = () => {
       disabled: false,
       action: () => {
         setVisible1(!visible1)
-      },
+      }
     },
     {
       name: 'up',
       title: '上一条',
       disabled: false,
-      action: () => {},
+      action: () => {}
     },
     {
       name: 'down',
       title: '下一条',
       disabled: false,
-      action: () => {},
+      action: () => {}
     },
     {
       name: 'save',
       title: '保存',
       disabled: false,
-      action: () => {},
+      action: () => {}
     },
     {
       name: 'delete',
       title: '删除',
       disabled: false,
-      action: () => {},
-    },
+      action: () => {}
+    }
   ]
 
   const fields = [
     {
       name: 'title',
       label: '标题',
-      required: true,
+      required: true
     },
     {
       name: 'sex',
-      label: '性别',
+      label: '性别'
     },
     {
       name: 'age',
-      label: '年龄',
+      label: '年龄'
     },
     {
       name: 'address',
-      label: '地址',
-    },
+      label: '地址'
+    }
   ]
 
   return (

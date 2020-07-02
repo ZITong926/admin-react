@@ -13,7 +13,7 @@ import {
   Switch,
   withRouter,
   Redirect,
-  RouteComponentProps,
+  RouteComponentProps
 } from 'react-router-dom'
 
 import './index.less'
@@ -37,7 +37,7 @@ const PageLayout = observer((props: RouteComponentProps) => {
     if (itemMenu) {
       store.setTagsNavData({
         path: itemMenu.path!,
-        title: itemMenu.title,
+        title: itemMenu.title
       })
     }
   })
