@@ -42,7 +42,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,less}": [
-      "prettier --write"
+      "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,less,md}\"",
+      "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json,css,scss,less,md}\""
     ]
   },
   "scripts": {
@@ -72,6 +73,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "http-proxy-middleware": "^1.0.4",
     "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "react-resizable": "^1.10.1"
   }
