@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Row, Col, Tooltip, Button } from "antd"
+import * as React from 'react'
+import { Row, Col, Tooltip, Button } from 'antd'
 import {
   UpOutlined,
   EditOutlined,
@@ -7,7 +7,7 @@ import {
   DownOutlined,
   PlusOutlined,
   DeleteOutlined,
-} from "@ant-design/icons"
+} from '@ant-design/icons'
 
 interface IIconToolsProps {
   icons: Array<{
@@ -23,17 +23,17 @@ interface IIconToolsProps {
 
 const renderIcon = (name: string) => {
   switch (name) {
-    case "edit":
+    case 'edit':
       return <EditOutlined />
-    case "delete":
+    case 'delete':
       return <DeleteOutlined />
-    case "plus":
+    case 'plus':
       return <PlusOutlined />
-    case "save":
+    case 'save':
       return <SaveOutlined />
-    case "up":
+    case 'up':
       return <UpOutlined />
-    case "down":
+    case 'down':
       return <DownOutlined />
     default:
       return null

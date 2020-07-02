@@ -1,7 +1,7 @@
 import Store from './store'
 import { action } from 'mobx'
 import MenuList from '@/mock/menuConfig'
-import { ClickParam } from "antd/lib/menu"
+import { ClickParam } from 'antd/lib/menu'
 import { findRoute } from '@/utils/routeFunc'
 import { history } from '@/components/myBrowserRouter'
 
@@ -23,15 +23,15 @@ class GlobalStore extends Store {
   }
 
   // 添加tags
-  @action public setTagsNavData = (obj: { title: string, path: string }) => {
-    const flag = this.tagsNavData.find(d => d.path === obj.path)
-    if(!flag){
+  @action public setTagsNavData = (obj: { title: string; path: string }) => {
+    const flag = this.tagsNavData.find((d) => d.path === obj.path)
+    if (!flag) {
       this.tagsNavData.push(obj)
     }
-    this.tagsNavData.forEach(d => {
-      if(d.path === obj.path){
+    this.tagsNavData.forEach((d) => {
+      if (d.path === obj.path) {
         d.color = 'primary'
-      }else{
+      } else {
         d.color = 'default'
       }
     })
@@ -39,8 +39,8 @@ class GlobalStore extends Store {
 
   // 删除tags
   @action public delOneTag = (item: IGloabalSpace.ITagsNavData) => {
-    const index = this.tagsNavData.findIndex(d => d.path === item.path)
-    if(index > -1){
+    const index = this.tagsNavData.findIndex((d) => d.path === item.path)
+    if (index > -1) {
       this.tagsNavData.splice(index, 1)
       history.push(this.tagsNavData[index - 1].path)
     }

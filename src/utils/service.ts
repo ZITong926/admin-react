@@ -2,31 +2,35 @@ import axios from 'axios'
 import { message } from 'antd'
 import { history } from '@/components/myBrowserRouter'
 
-const service = axios.create({
-
-})
+const service = axios.create({})
 
 // 请求拦截器
-service.interceptors.request.use(config => {
-  return config
-}, err => {
-  return Promise.reject(err)
-})
+service.interceptors.request.use(
+  (config) => {
+    return config
+  },
+  (err) => {
+    return Promise.reject(err)
+  }
+)
 
 // 响应拦截器
-service.interceptors.response.use(response => {
-  return response
-}, err => {
-  const { status } = err.response
-  if (status < 200 || status >= 300) {
-    const msg = showStatus(status)
-    message.error(msg)
-    if(status === '401'){
-      history.push('/login', window.location.pathname)
+service.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (err) => {
+    const { status } = err.response
+    if (status < 200 || status >= 300) {
+      const msg = showStatus(status)
+      message.error(msg)
+      if (status === '401') {
+        history.push('/login', window.location.pathname)
+      }
     }
+    return Promise.reject(err)
   }
-  return Promise.reject(err)
-})
+)
 
 // 根据不同的状态码，生成不同的提示信息
 const showStatus = (status: number) => {

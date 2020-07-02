@@ -1,56 +1,56 @@
 import * as React from 'react'
 import { DataNode } from 'rc-tree-select/lib/interface'
-import { FormProps, FormInstance } from "antd/lib/form/Form";
-import { CheckedStrategy } from "rc-tree-select/lib/utils/strategyUtil";
-import { Form, Select, Input, Spin, TreeSelect, Col, Row, Button } from "antd";
+import { FormProps, FormInstance } from 'antd/lib/form/Form'
+import { CheckedStrategy } from 'rc-tree-select/lib/utils/strategyUtil'
+import { Form, Select, Input, Spin, TreeSelect, Col, Row, Button } from 'antd'
 
 export interface FormFieldsProps {
-  name: string;
-  label: string;
-  type?: string;
-  multiple?: boolean;
-  disabled?: boolean;
-  fetching?: boolean;
-  required?: boolean;
-  allowClear?: boolean;
-  placeholder?: string;
-  showSearch?: boolean;
-  initialValue?: any;
-  treeData?: DataNode[];
-  filterOption?: boolean;
-  labelInValue?: boolean;
-  treeCheckable?: boolean;
-  onSearch?: (value: string) => void;
-  showCheckedStrategy?: CheckedStrategy;
-  selectValue?: Array<{ text: string; value: string }>;
+  name: string
+  label: string
+  type?: string
+  multiple?: boolean
+  disabled?: boolean
+  fetching?: boolean
+  required?: boolean
+  allowClear?: boolean
+  placeholder?: string
+  showSearch?: boolean
+  initialValue?: any
+  treeData?: DataNode[]
+  filterOption?: boolean
+  labelInValue?: boolean
+  treeCheckable?: boolean
+  onSearch?: (value: string) => void
+  showCheckedStrategy?: CheckedStrategy
+  selectValue?: Array<{ text: string; value: string }>
 }
 
 export interface BaseFormProps extends FormProps {
-  reset?: boolean;
-  search?: boolean;
-  spanWidth?: number;
-  className?: string;
+  reset?: boolean
+  search?: boolean
+  spanWidth?: number
+  className?: string
   multyRowCol?: number
-  fields: FormFieldsProps[];
-  onFinish: (values: any) => void;
+  fields: FormFieldsProps[]
+  onFinish: (values: any) => void
 }
 
 const BaseForm: React.FC<BaseFormProps> = ({
   fields,
   className,
-  size = "middle",
-  layout = "horizontal",
+  size = 'middle',
+  layout = 'horizontal',
   spanWidth = 6,
   search,
   reset,
   multyRowCol,
   ...rest
 }) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   const renderType = (item: FormFieldsProps) => {
     switch (item.type) {
-      case "select": // 有数据、可进行选择和搜索
+      case 'select': // 有数据、可进行选择和搜索
         return (
           <Select
             size={size}
@@ -58,7 +58,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
             allowClear={!!item.allowClear}
             showSearch={!!item.showSearch}
             labelInValue={!!item.labelInValue}
-            placeholder={item.placeholder ? item.placeholder : "请选择"}
+            placeholder={item.placeholder ? item.placeholder : '请选择'}
             disabled={
               !!item.disabled ||
               !item.selectValue ||
@@ -71,8 +71,8 @@ const BaseForm: React.FC<BaseFormProps> = ({
               </Select.Option>
             ))}
           </Select>
-        );
-      case "search_select": // 无数据 根据输入的数据搜索
+        )
+      case 'search_select': // 无数据 根据输入的数据搜索
         return (
           <Select
             size={size}
@@ -82,7 +82,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
             showSearch={!!item.showSearch}
             filterOption={!!item.filterOption}
             labelInValue={!!item.labelInValue}
-            placeholder={item.placeholder ? item.placeholder : "请检索"}
+            placeholder={item.placeholder ? item.placeholder : '请检索'}
             notFoundContent={item.fetching ? <Spin size="small" /> : null}
           >
             {item.selectValue!.map((t) => (
@@ -91,8 +91,8 @@ const BaseForm: React.FC<BaseFormProps> = ({
               </Select.Option>
             ))}
           </Select>
-        );
-      case "tree_select":
+        )
+      case 'tree_select':
         return (
           <TreeSelect
             size={size}
@@ -103,46 +103,49 @@ const BaseForm: React.FC<BaseFormProps> = ({
             allowClear={!!item.allowClear}
             treeCheckable={!!item.treeCheckable}
             notFoundContent={item.fetching ? <Spin size="small" /> : null}
-            placeholder={item.placeholder ? item.placeholder : "请选择树节点"}
+            placeholder={item.placeholder ? item.placeholder : '请选择树节点'}
             showCheckedStrategy={
-              item.showCheckedStrategy ? item.showCheckedStrategy : "SHOW_CHILD"
+              item.showCheckedStrategy ? item.showCheckedStrategy : 'SHOW_CHILD'
             }
           />
-        );
+        )
       default:
         return (
           <Input
             size={size}
-            style={{ width: "100%" }}
-            placeholder={item.placeholder ? item.placeholder : "请输入"}
+            style={{ width: '100%' }}
+            placeholder={item.placeholder ? item.placeholder : '请输入'}
           />
-        );
+        )
     }
-  };
+  }
 
-  const formItemLayout = layout === 'vertical' && multyRowCol ? {
-    labelCol: {
-      span: 24
-    },
-    wrapperCol: {
-      span: 24
-    }
-  } : {
-    labelCol: {
-      xs: { span: 8 },
-      sm: { span: 6 },
-    },
-    wrapperCol: {
-      xs: { span: 16 },
-      sm: { span: 18 },
-    },
-  };
+  const formItemLayout =
+    layout === 'vertical' && multyRowCol
+      ? {
+          labelCol: {
+            span: 24,
+          },
+          wrapperCol: {
+            span: 24,
+          },
+        }
+      : {
+          labelCol: {
+            xs: { span: 8 },
+            sm: { span: 6 },
+          },
+          wrapperCol: {
+            xs: { span: 16 },
+            sm: { span: 18 },
+          },
+        }
 
   const renderLayout = (insForm: FormInstance) => {
-    const colSpan = { md: 8, sm: 24, lg: spanWidth };
-    if (layout === "inline") {
+    const colSpan = { md: 8, sm: 24, lg: spanWidth }
+    if (layout === 'inline') {
       return (
-        <Row gutter={{ md: 8, lg: 24, xl: 24 }} style={{ width: "100%" }}>
+        <Row gutter={{ md: 8, lg: 24, xl: 24 }} style={{ width: '100%' }}>
           {fields.map((d) => (
             <Col key={d.name} {...colSpan}>
               <Form.Item
@@ -173,9 +176,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
           {reset ? (
             <Col>
               <Form.Item>
-                <Button onClick={() => insForm.resetFields()}>
-                  重置
-                </Button>
+                <Button onClick={() => insForm.resetFields()}>重置</Button>
               </Form.Item>
             </Col>
           ) : null}
@@ -187,8 +188,12 @@ const BaseForm: React.FC<BaseFormProps> = ({
           {multyRowCol ? (
             <React.Fragment>
               {_.chunk(fields, multyRowCol).map((d, i) => (
-                <Row key={i} gutter={{ md: 8, lg: 24, xl: 24 }} style={{ width: "100%" }}>
-                  {d.map(t => (
+                <Row
+                  key={i}
+                  gutter={{ md: 8, lg: 24, xl: 24 }}
+                  style={{ width: '100%' }}
+                >
+                  {d.map((t) => (
                     <Col key={t.name} {...colSpan}>
                       <Form.Item
                         name={t.name}
@@ -209,7 +214,12 @@ const BaseForm: React.FC<BaseFormProps> = ({
                   ))}
                 </Row>
               ))}
-              <Row align="middle" gutter={16} justify="end" style={{ width: '100%', paddingRight: 8 }}>
+              <Row
+                align="middle"
+                gutter={16}
+                justify="end"
+                style={{ width: '100%', paddingRight: 8 }}
+              >
                 {search ? (
                   <Col>
                     <Form.Item>
@@ -230,7 +240,8 @@ const BaseForm: React.FC<BaseFormProps> = ({
                 ) : null}
               </Row>
             </React.Fragment>
-          ) : <React.Fragment>
+          ) : (
+            <React.Fragment>
               {fields.map((d) => (
                 <Form.Item
                   key={d.name}
@@ -249,17 +260,17 @@ const BaseForm: React.FC<BaseFormProps> = ({
                 </Form.Item>
               ))}
             </React.Fragment>
-          }
+          )}
         </React.Fragment>
-      );
+      )
     }
-  };
+  }
 
   return (
     <Form layout={layout} form={form} className={className} {...rest}>
       {renderLayout(rest.form ? rest.form : form)}
     </Form>
-  );
-};
+  )
+}
 
-export default BaseForm;
+export default BaseForm

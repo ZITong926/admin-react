@@ -1,6 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
-const { override, fixBabelImports, addLessLoader, addWebpackAlias, useEslintRc, addWebpackPlugin } = require('customize-cra')
+const {
+  override,
+  fixBabelImports,
+  addLessLoader,
+  addWebpackAlias,
+  useEslintRc,
+  addWebpackPlugin,
+} = require('customize-cra')
 
 module.exports = override(
   useEslintRc(),
@@ -16,7 +23,9 @@ module.exports = override(
   addWebpackAlias({
     '@': path.resolve(__dirname, 'src'),
   }),
-  addWebpackPlugin(new webpack.ProvidePlugin({
-    _: 'lodash'
-  }))
+  addWebpackPlugin(
+    new webpack.ProvidePlugin({
+      _: 'lodash',
+    })
+  )
 )

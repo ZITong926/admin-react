@@ -1,15 +1,15 @@
-import * as React from "react"
-import store from "@/stores/global"
-import { observer } from "mobx-react"
-import { Form, Input, Button } from "antd"
+import * as React from 'react'
+import store from '@/stores/global'
+import { observer } from 'mobx-react'
+import { Form, Input, Button } from 'antd'
 import { history } from '@/components/myBrowserRouter'
-import { UserOutlined, LockOutlined } from "@ant-design/icons"
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import "./index.less"
+import './index.less'
 
 const Login = observer(() => {
   const onFinish = (values: any) => {
-    console.log("Received values of form: ", values)
+    console.log('Received values of form: ', values)
     store.loginIn()
     history.push('/app')
   }
@@ -24,7 +24,7 @@ const Login = observer(() => {
         >
           <Form.Item
             name="username"
-            rules={[{ required: true, message: "Please input your Username!" }]}
+            rules={[{ required: true, message: 'Please input your Username!' }]}
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -33,7 +33,7 @@ const Login = observer(() => {
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Please input your Password!" }]}
+            rules={[{ required: true, message: 'Please input your Password!' }]}
           >
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}

@@ -1,7 +1,7 @@
-import { Table } from "antd"
-import * as React from "react"
-import { ResizeCallbackData } from "react-resizable"
-import { TableProps, ColumnType } from "antd/lib/table"
+import { Table } from 'antd'
+import * as React from 'react'
+import { ResizeCallbackData } from 'react-resizable'
+import { TableProps, ColumnType } from 'antd/lib/table'
 import { header } from '@/components/BaseTable/ResizableHeader'
 
 import './index.less'

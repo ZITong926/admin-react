@@ -1,5 +1,5 @@
-import * as React from "react"
-import { ResizableProps, Resizable } from "react-resizable"
+import * as React from 'react'
+import { ResizableProps, Resizable } from 'react-resizable'
 
 interface ResizableHeaderCellProps extends ResizableProps {
   title?: string
@@ -38,5 +38,5 @@ export const ResizableHeader: React.FC<ResizableHeaderCellProps> = ({
 }
 
 export const header = {
-  cell: ResizableHeader
+  cell: ResizableHeader,
 }

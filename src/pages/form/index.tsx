@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Form, Input, Button, Checkbox } from "antd"
+import { Form, Input, Button, Checkbox } from 'antd'
 
 import './index.less'
 
@@ -13,11 +13,11 @@ const tailLayout = {
 
 const BForm = () => {
   const onFinish = (values: any) => {
-    console.log("Success:", values)
+    console.log('Success:', values)
   }
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo)
+    console.log('Failed:', errorInfo)
   }
 
   return (
@@ -32,7 +32,7 @@ const BForm = () => {
         <Form.Item
           label="Username"
           name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input />
         </Form.Item>
@@ -40,7 +40,7 @@ const BForm = () => {
         <Form.Item
           label="Password"
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password />
         </Form.Item>

@@ -1,7 +1,6 @@
-declare const _:_.LoDashStatic
+declare const _: _.LoDashStatic
 
 declare namespace IGloabalSpace {
-
   interface IRouteData {
     icon: string
     title: string
@@ -10,7 +9,7 @@ declare namespace IGloabalSpace {
     component: React.ComponentType
   }
 
-  interface IMenuData{
+  interface IMenuData {
     title: string
     path?: string
     icon: string
@@ -23,13 +22,13 @@ declare namespace IGloabalSpace {
     title: string
   }
 
-  interface ITagsNavData{
+  interface ITagsNavData {
     path: string
     title: string
     color?: 'default' | 'primary'
   }
 
-  interface ISelectValue{
+  interface ISelectValue {
     text: string
     value: string
   }

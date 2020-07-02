@@ -6,14 +6,34 @@ import BaseForm, { BaseFormProps } from '@/components/BaseForm'
 
 type BaseFormDrawerProps = DrawerProps & BaseFormProps
 
-const FooterComp = ({ form, onClose }: { onClose: (e: any) => void, form: FormInstance }) => (
+const FooterComp = ({
+  form,
+  onClose,
+}: {
+  onClose: (e: any) => void
+  form: FormInstance
+}) => (
   <div style={{ textAlign: 'right' }}>
-    <Button onClick={onClose} style={{ marginRight: 8 }}>取消</Button>
-    <Button type="primary" onClick={() => form.submit()}>确定</Button>
+    <Button onClick={onClose} style={{ marginRight: 8 }}>
+      取消
+    </Button>
+    <Button type="primary" onClick={() => form.submit()}>
+      确定
+    </Button>
   </div>
 )
 
-const BaseFormDrawer = ({ children, visible, title, className, closable, onClose, width, footer, ...rest }: BaseFormDrawerProps) => {
+const BaseFormDrawer = ({
+  children,
+  visible,
+  title,
+  className,
+  closable,
+  onClose,
+  width,
+  footer,
+  ...rest
+}: BaseFormDrawerProps) => {
   const [form] = Form.useForm()
   return (
     <Drawer

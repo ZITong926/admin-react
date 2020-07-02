@@ -1,9 +1,9 @@
-import * as React from "react"
-import { Button, List } from "antd"
+import * as React from 'react'
+import { Button, List } from 'antd'
 import { CloseOutlined } from '@ant-design/icons'
-import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import "./index.less"
+import './index.less'
 
 interface ITransitionGroupProps {
   items: Array<{ id: number; text: string }>
@@ -20,9 +20,7 @@ interface ITransitionGroupProps {
 const WrapTransitionGroup = (props: ITransitionGroupProps) => {
   const { items, setItem } = props
   return (
-    <List
-      bordered={true}
-    >
+    <List bordered={true}>
       <TransitionGroup>
         {items.map((d) => (
           <CSSTransition key={d.id} timeout={500} classNames="fade">

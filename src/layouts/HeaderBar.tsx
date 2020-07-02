@@ -1,7 +1,11 @@
-import * as React from "react"
-import { Breadcrumb, Layout } from "antd"
-import { history } from "@/components/myBrowserRouter"
-import { MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined } from "@ant-design/icons"
+import * as React from 'react'
+import { Breadcrumb, Layout } from 'antd'
+import { history } from '@/components/myBrowserRouter'
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  HomeOutlined,
+} from '@ant-design/icons'
 
 interface IHeaderProps {
   collapsed: boolean
@@ -19,7 +23,7 @@ const HeaderBar = (props: IHeaderProps) => {
 
   const BreadcrumbElement = (
     <Breadcrumb className="admin-breadcrumb">
-      <Breadcrumb.Item onClick={() => handleClick("/app")}>
+      <Breadcrumb.Item onClick={() => handleClick('/app')}>
         <HomeOutlined type="home" />
         <span>首页</span>
       </Breadcrumb.Item>
@@ -41,7 +45,7 @@ const HeaderBar = (props: IHeaderProps) => {
         {React.createElement(
           props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
           {
-            className: "trigger",
+            className: 'trigger',
             onClick: props.toggleCollapsed,
           }
         )}

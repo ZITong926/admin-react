@@ -1,27 +1,35 @@
-import React from "react"
-import { NodePanel } from "./Panel"
-import { Divider, Tooltip } from "antd"
-import { createFromIconfontCN } from "@ant-design/icons"
+import React from 'react'
+import { NodePanel } from './Panel'
+import { Divider, Tooltip } from 'antd'
+import { createFromIconfontCN } from '@ant-design/icons'
 // import WrappedClassComponent from "./WrappedClassComponent"
 // import { MindData } from 'gg-editor/lib/common/interfaces'
-import GGEditor, { Flow, Command, ContextMenu, constants, Item, ItemPanel, RegisterNode } from "gg-editor"
+import GGEditor, {
+  Flow,
+  Command,
+  ContextMenu,
+  constants,
+  Item,
+  ItemPanel,
+  RegisterNode,
+} from 'gg-editor'
 
-import "./index.less"
+import './index.less'
 
 const { EditorCommand, ItemType } = constants
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: "https://at.alicdn.com/t/font_1518433_oa5sw7ezue.js",
+  scriptUrl: 'https://at.alicdn.com/t/font_1518433_oa5sw7ezue.js',
 })
 
 const FLOW_COMMAND_LIST = [
   EditorCommand.Undo,
   EditorCommand.Redo,
-  "|",
+  '|',
   EditorCommand.Copy,
   EditorCommand.Paste,
   EditorCommand.Remove,
-  "|",
+  '|',
   EditorCommand.ZoomIn,
   EditorCommand.ZoomOut,
 ]
@@ -47,23 +55,23 @@ const FLOW_COMMAND_LIST = [
 const flowData = {
   nodes: [
     {
-      id: "0",
-      label: "Node",
+      id: '0',
+      label: 'Node',
       x: 50,
       y: 50,
     },
     {
-      id: "1",
-      label: "Node",
+      id: '1',
+      label: 'Node',
       x: 50,
       y: 200,
     },
   ],
   edges: [
     {
-      source: "0",
+      source: '0',
       sourceAnchor: 1,
-      target: "1",
+      target: '1',
       targetAnchor: 0,
     },
   ],
@@ -102,26 +110,26 @@ function App() {
         </div>
         <div className="toolbar">
           {FLOW_COMMAND_LIST.map((name, index) =>
-            name === "|" ? (
+            name === '|' ? (
               <Divider key={index} type="vertical" />
             ) : (
-                <Command
-                  key={name}
-                  name={name}
-                  className="command"
-                  disabledClassName="commandDisabled"
-                >
-                  <Tooltip title={_.upperFirst(name)}>
-                    <IconFont type={`icon-${name}`} />
-                  </Tooltip>
-                </Command>
-              )
+              <Command
+                key={name}
+                name={name}
+                className="command"
+                disabledClassName="commandDisabled"
+              >
+                <Tooltip title={_.upperFirst(name)}>
+                  <IconFont type={`icon-${name}`} />
+                </Tooltip>
+              </Command>
+            )
           )}
         </div>
       </div>
       <div
         className="detailPanel"
-        style={{ width, border: width ? "1px solid #e8e8e8" : "none" }}
+        style={{ width, border: width ? '1px solid #e8e8e8' : 'none' }}
       >
         <NodePanel />
       </div>
@@ -130,10 +138,10 @@ function App() {
           className="item"
           type={ItemType.Node}
           model={{
-            type: "node",
+            type: 'node',
             size: [120, 42],
-            label: "rect",
-            shape: "custom-node",
+            label: 'rect',
+            shape: 'custom-node',
           }}
         >
           <div draggable={false}>rect</div>
@@ -141,10 +149,10 @@ function App() {
       </ItemPanel>
       <Flow
         onDragEnd={(e) => {
-          console.log("onDragEnd", e)
+          console.log('onDragEnd', e)
         }}
         onAfterRemoveItem={(e) => {
-          console.log("onAfterRemoveItem", e)
+          console.log('onAfterRemoveItem', e)
         }}
         data={flowData}
         className="graph"
@@ -152,10 +160,10 @@ function App() {
           setWidth(0)
         }}
         onNodeDoubleClick={(node) => {
-          console.log("node", node)
+          console.log('node', node)
           setWidth(300)
         }}
-        graphConfig={{ defaultNode: { type: "custom-node" } }}
+        graphConfig={{ defaultNode: { type: 'custom-node' } }}
       />
       <RegisterNode
         name="custom-node"
@@ -182,7 +190,7 @@ function App() {
           return (
             <div
               className="contextMenu"
-              style={{ position: "absolute", top, left }}
+              style={{ position: 'absolute', top, left }}
             >
               {[
                 EditorCommand.Undo,

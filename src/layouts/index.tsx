@@ -1,18 +1,24 @@
-import { toJS } from "mobx"
-import { Layout } from "antd"
-import * as React from "react"
-import store from "@/stores/global"
-import { observer } from "mobx-react"
-import MenuList from "@/mock/menuConfig"
-import SiderBar from "@/layouts/SiderBar"
-import HeaderBar from "@/layouts/HeaderBar"
-import RouteConfig from "@/mock/routeConfig"
-import TagsNavBar from "@/components/TagsNavBar"
-import { Route, Switch, withRouter, Redirect, RouteComponentProps } from "react-router-dom"
+import { toJS } from 'mobx'
+import { Layout } from 'antd'
+import * as React from 'react'
+import store from '@/stores/global'
+import { observer } from 'mobx-react'
+import MenuList from '@/mock/menuConfig'
+import SiderBar from '@/layouts/SiderBar'
+import HeaderBar from '@/layouts/HeaderBar'
+import RouteConfig from '@/mock/routeConfig'
+import TagsNavBar from '@/components/TagsNavBar'
+import {
+  Route,
+  Switch,
+  withRouter,
+  Redirect,
+  RouteComponentProps,
+} from 'react-router-dom'
 
-import "./index.less"
+import './index.less'
 
-const Loading = React.lazy(() => import("@/components/Loading"))
+const Loading = React.lazy(() => import('@/components/Loading'))
 
 const Protectd = (
   Comp: React.ComponentType,

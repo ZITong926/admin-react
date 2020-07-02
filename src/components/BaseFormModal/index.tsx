@@ -1,9 +1,9 @@
-import * as React from "react";
-import { Modal, Form } from "antd";
-import { ModalProps } from "antd/lib/modal";
-import BaseForm, { BaseFormProps } from "@/components/BaseForm";
+import * as React from 'react'
+import { Modal, Form } from 'antd'
+import { ModalProps } from 'antd/lib/modal'
+import BaseForm, { BaseFormProps } from '@/components/BaseForm'
 
-type BaseFormModalProps = ModalProps & BaseFormProps;
+type BaseFormModalProps = ModalProps & BaseFormProps
 
 const BaseFormModal: React.FC<BaseFormModalProps> = ({
   title,
@@ -12,11 +12,11 @@ const BaseFormModal: React.FC<BaseFormModalProps> = ({
   onCancel,
   ...rest
 }) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   const handleonOk = () => {
-    form.submit();
-  };
+    form.submit()
+  }
   return (
     <Modal
       title={title}
@@ -30,7 +30,7 @@ const BaseFormModal: React.FC<BaseFormModalProps> = ({
         <BaseForm form={form} {...rest} />
       )}
     </Modal>
-  );
-};
+  )
+}
 
-export default BaseFormModal;
+export default BaseFormModal
