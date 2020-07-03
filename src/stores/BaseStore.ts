@@ -54,7 +54,7 @@ export default class {
     this.loadingSet.set(lodaingKey, true)
     return (asynchronous: Promise<any>) => {
       return asynchronous
-        .then((res) => {
+        .then(res => {
           this.loadingSet.set(lodaingKey, false)
           return res
         })

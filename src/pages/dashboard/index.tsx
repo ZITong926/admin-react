@@ -148,10 +148,10 @@ function App() {
         </Item>
       </ItemPanel>
       <Flow
-        onDragEnd={(e) => {
+        onDragEnd={e => {
           console.log('onDragEnd', e)
         }}
-        onAfterRemoveItem={(e) => {
+        onAfterRemoveItem={e => {
           console.log('onAfterRemoveItem', e)
         }}
         data={flowData}
@@ -159,7 +159,7 @@ function App() {
         onCanvasClick={() => {
           setWidth(0)
         }}
-        onNodeDoubleClick={(node) => {
+        onNodeDoubleClick={node => {
           console.log('node', node)
           setWidth(300)
         }}
@@ -196,7 +196,7 @@ function App() {
                 EditorCommand.Undo,
                 EditorCommand.Redo,
                 EditorCommand.PasteHere
-              ].map((name) => (
+              ].map(name => (
                 <Command
                   key={name}
                   name={name}

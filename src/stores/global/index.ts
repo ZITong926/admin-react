@@ -24,11 +24,11 @@ class GlobalStore extends Store {
 
   // 添加tags
   @action public setTagsNavData = (obj: { title: string; path: string }) => {
-    const flag = this.tagsNavData.find((d) => d.path === obj.path)
+    const flag = this.tagsNavData.find(d => d.path === obj.path)
     if (!flag) {
       this.tagsNavData.push(obj)
     }
-    this.tagsNavData.forEach((d) => {
+    this.tagsNavData.forEach(d => {
       if (d.path === obj.path) {
         d.color = 'primary'
       } else {
@@ -39,7 +39,7 @@ class GlobalStore extends Store {
 
   // 删除tags
   @action public delOneTag = (item: IGloabalSpace.ITagsNavData) => {
-    const index = this.tagsNavData.findIndex((d) => d.path === item.path)
+    const index = this.tagsNavData.findIndex(d => d.path === item.path)
     if (index > -1) {
       this.tagsNavData.splice(index, 1)
       history.push(this.tagsNavData[index - 1].path)

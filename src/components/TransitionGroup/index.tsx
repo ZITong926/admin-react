@@ -22,14 +22,14 @@ const WrapTransitionGroup = (props: ITransitionGroupProps) => {
   return (
     <List bordered={true}>
       <TransitionGroup>
-        {items.map((d) => (
+        {items.map(d => (
           <CSSTransition key={d.id} timeout={500} classNames="fade">
             <List.Item>
               <Button
                 icon={<CloseOutlined />}
                 // type="danger"
                 onClick={() =>
-                  setItem((items) => items.filter((item) => item.id !== d.id))
+                  setItem(items => items.filter(item => item.id !== d.id))
                 }
               />
               {d.text}

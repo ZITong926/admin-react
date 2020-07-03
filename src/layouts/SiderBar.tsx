@@ -11,7 +11,7 @@ interface ISiderBarProps extends RouteComponentProps {
 }
 
 const injectMenu = (MenuList: IGloabalSpace.IMenuData[]) => {
-  return MenuList.map((item) => {
+  return MenuList.map(item => {
     if (item.children && item.children.length > 0) {
       return (
         <Menu.SubMenu

@@ -11,7 +11,7 @@ interface ITransitionProps {
 
 const WrapTransition = (props: ITransitionProps) => (
   <Transition in={props.in} timeout={props.timeout}>
-    {(state) => (
+    {state => (
       <div className={`${props.name} ${props.name}-${state}`}>
         <div style={{ background: '#ddd', width: 500, height: 900 }} />
       </div>

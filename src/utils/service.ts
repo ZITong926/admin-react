@@ -6,20 +6,20 @@ const service = axios.create({})
 
 // 请求拦截器
 service.interceptors.request.use(
-  (config) => {
+  config => {
     return config
   },
-  (err) => {
+  err => {
     return Promise.reject(err)
   }
 )
 
 // 响应拦截器
 service.interceptors.response.use(
-  (response) => {
+  response => {
     return response
   },
-  (err) => {
+  err => {
     const { status } = err.response
     if (status < 200 || status >= 300) {
       const msg = showStatus(status)

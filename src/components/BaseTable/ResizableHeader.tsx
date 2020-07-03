@@ -26,7 +26,7 @@ export const ResizableHeader: React.FC<ResizableHeaderCellProps> = ({
       handle={
         <span
           className="react-resizable-handle"
-          onClick={(e) => e.stopPropagation()}
+          onClick={e => e.stopPropagation()}
         />
       }
     >

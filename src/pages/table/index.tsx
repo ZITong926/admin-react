@@ -20,7 +20,7 @@ const columns: Array<ColumnProps<TableDataSourceProps>> = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <a>{text}</a>
+    render: text => <a>{text}</a>
   },
   {
     title: 'Age',
@@ -41,7 +41,7 @@ const columns: Array<ColumnProps<TableDataSourceProps>> = [
     title: 'Tags',
     key: 'tags',
     dataIndex: 'tags',
-    render: (text) => (
+    render: text => (
       <span>
         {text.map((tag: string) => {
           let color = tag.length > 5 ? 'geekblue' : 'green'
@@ -231,7 +231,7 @@ const BTable = () => {
           pageSize: 10,
           total: data.length,
           showSizeChanger: true,
-          showTotal: (total) => `共${total}条`
+          showTotal: total => `共${total}条`
         }}
       />
       <BaseFormModal

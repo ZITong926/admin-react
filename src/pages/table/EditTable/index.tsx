@@ -124,7 +124,7 @@ const ResiableTable = () => {
 
   const handleSave = (record: TableDataSourceProps) => {
     const newDataSource = [...ref.current!]
-    const index = newDataSource.findIndex((t) => t.id === record.id)
+    const index = newDataSource.findIndex(t => t.id === record.id)
     const item = newDataSource[index]
     newDataSource.splice(index, 1, {
       ...item,
@@ -142,7 +142,7 @@ const ResiableTable = () => {
   }, [columns])
 
   React.useEffect(() => {
-    const newColumns = columns.map((d) => ({
+    const newColumns = columns.map(d => ({
       ...d,
       onCell: (record: TableDataSourceProps) => ({
         record,
@@ -229,7 +229,7 @@ const ResiableTable = () => {
         layout="inline"
         fields={fields}
         className="edit-table-search"
-        onFinish={(values) => {
+        onFinish={values => {
           console.log('values', values)
         }}
       />
@@ -252,7 +252,7 @@ const ResiableTable = () => {
         title="添加数据"
         fields={fields}
         visible={visible}
-        onFinish={(values) => {
+        onFinish={values => {
           console.log('values', values)
         }}
         onCancel={() => setVisible(!visible)}
@@ -270,7 +270,7 @@ const ResiableTable = () => {
         visible={visible1}
         className="drawer-form"
         onClose={() => setVisible1(!visible1)}
-        onFinish={(values) => {
+        onFinish={values => {
           console.log('values', values)
         }}
       />

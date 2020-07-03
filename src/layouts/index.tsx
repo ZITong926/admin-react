@@ -33,7 +33,7 @@ const Protectd = (
 const PageLayout = observer((props: RouteComponentProps) => {
   React.useEffect(() => {
     const { pathname } = props.location
-    const itemMenu = MenuList.find((d) => d.path === pathname)
+    const itemMenu = MenuList.find(d => d.path === pathname)
     if (itemMenu) {
       store.setTagsNavData({
         path: itemMenu.path!,
@@ -58,7 +58,7 @@ const PageLayout = observer((props: RouteComponentProps) => {
         <Layout.Content className="main-window">
           <React.Suspense fallback={<Loading />}>
             <Switch>
-              {RouteConfig.map((d) => (
+              {RouteConfig.map(d => (
                 <Route
                   key={d.path}
                   exact={true}

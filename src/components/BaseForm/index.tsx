@@ -65,7 +65,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
               item.selectValue!.length === 0
             }
           >
-            {item.selectValue!.map((t) => (
+            {item.selectValue!.map(t => (
               <Select.Option key={t.value} value={t.value}>
                 {t.text}
               </Select.Option>
@@ -85,7 +85,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
             placeholder={item.placeholder ? item.placeholder : '请检索'}
             notFoundContent={item.fetching ? <Spin size="small" /> : null}
           >
-            {item.selectValue!.map((t) => (
+            {item.selectValue!.map(t => (
               <Select.Option key={t.value} value={t.value}>
                 {t.text}
               </Select.Option>
@@ -146,7 +146,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
     if (layout === 'inline') {
       return (
         <Row gutter={{ md: 8, lg: 24, xl: 24 }} style={{ width: '100%' }}>
-          {fields.map((d) => (
+          {fields.map(d => (
             <Col key={d.name} {...colSpan}>
               <Form.Item
                 name={d.name}
@@ -193,7 +193,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
                   gutter={{ md: 8, lg: 24, xl: 24 }}
                   style={{ width: '100%' }}
                 >
-                  {d.map((t) => (
+                  {d.map(t => (
                     <Col key={t.name} {...colSpan}>
                       <Form.Item
                         name={t.name}
@@ -242,7 +242,7 @@ const BaseForm: React.FC<BaseFormProps> = ({
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {fields.map((d) => (
+              {fields.map(d => (
                 <Form.Item
                   key={d.name}
                   name={d.name}

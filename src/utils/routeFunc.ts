@@ -11,7 +11,7 @@ const findRouteTitle = (
   path: string,
   breadcrumbList: IGloabalSpace.IBreadcrumbData[]
 ) => {
-  MenuList.map((d) => {
+  MenuList.map(d => {
     if (d.children && d.children.length) {
       findRouteTitle(d.children, path, breadcrumbList)
     } else {

@@ -42,7 +42,7 @@ const renderIcon = (name: string) => {
 
 const IconTools = ({ icons, gutter, className, style }: IIconToolsProps) => (
   <Row gutter={gutter} className={className} style={style}>
-    {icons.map((t) => (
+    {icons.map(t => (
       <Col key={t.name}>
         <Tooltip title={t.title}>
           <Button

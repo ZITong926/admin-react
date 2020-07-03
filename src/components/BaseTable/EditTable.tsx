@@ -54,7 +54,7 @@ const EditFormComponent = React.forwardRef<any, any>(
         case 'select':
           return (
             <Select ref={ref} {...rest} open={true} autoFocus={true}>
-              {selectValue!.map((t) => (
+              {selectValue!.map(t => (
                 <Select.Option key={t} value={t}>
                   {t}
                 </Select.Option>

@@ -28,10 +28,10 @@ class Panel extends React.Component<PanelProps, PanelState> {
   handleSubmit = () => {
     this.formRef
       .current!.validateFields()
-      .then((values) => {
+      .then(values => {
         console.log('validateFields-success', values)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('validateFields-error', err)
       })
     this.formRef.current!.submit()
